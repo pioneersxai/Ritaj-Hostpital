@@ -5,29 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="عيادات چميلة في سوهاج — جلدية، تجميل، ليزر، أسنان. احجزي جلستك الآن">
     <meta name="keywords" content="عيادات جميلة, سوهاج, جلدية, تجميل, ليزر, بوتوكس, فيلر, تبييض أسنان">
-    <meta name="author" content="عيادات چميلة">
     <meta property="og:title" content="عيادات چميلة — چميلة.. عيشي الفرق">
-    <meta property="og:description" content="عيادات چميلة في سوهاج — جلدية، تجميل، ليزر، أسنان وأكثر">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pioneersxai.github.io/Jamile-clinic-sohag">
     <title>عيادات چميلة — چميلة.. عيشي الفرق</title>
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="Logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
     <style>
-        .nav-container { display:flex; justify-content:space-between; align-items:center; width:100%; }
-        .nav-links { display:flex; gap:25px; list-style:none; margin:0; padding:0; }
-        .nav-auth-buttons { display:flex; gap:10px; align-items:center; }
-        .btn-nav-login { padding:8px 20px; border:1px solid #1a2744; border-radius:8px; color:#1a2744; text-decoration:none; font-size:.9rem; transition:all .3s; }
-        .btn-nav-login:hover { border-color:#C9A55C; color:#C9A55C; }
-        .btn-nav-signup { padding:8px 20px; background:#C9A55C; border-radius:8px; color:#fff; text-decoration:none; font-size:.9rem; font-weight:600; transition:all .3s; }
-        .btn-nav-signup:hover { background:#a8863e; transform:translateY(-2px); box-shadow:0 5px 20px rgba(201,165,92,.4); }
-        .btn-signup { background:linear-gradient(135deg,#C9A55C 0%,#e0bc70 100%); padding:15px 30px; border-radius:10px; color:#fff; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:8px; transition:all .3s; }
-        .btn-signup:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(201,165,92,.4); }
-        @media(max-width:992px){ .nav-links{display:none!important} .nav-links.active{display:flex!important;flex-direction:column} }
+/* ═══════════════════════════════════════
+   CRYSTAL FLOATING NAV
+═══════════════════════════════════════ */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 1200px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 60px;
+    padding: 10px 24px;
+    z-index: 1000;
+    transition: all .4s ease;
+    box-shadow: 0 4px 24px rgba(201,165,92,0.08);
+}
+nav.scrolled {
+    background: rgba(255,255,255,0.96);
+    border-color: rgba(201,165,92,0.25);
+    box-shadow: 0 8px 32px rgba(201,165,92,0.15);
+    top: 12px;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+.nav-logo img {
+    height: 42px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+.nav-links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: row-reverse;
+}
+.nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 30px;
+    transition: all .3s;
+    font-family: 'Cairo',sans-serif;
+}
+nav.scrolled .nav-links a { color: #1a2744; }
+.nav-links a:hover {
+    background: rgba(201,165,92,0.15);
+    color: #C9A55C !important;
+}
+.nav-auth {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.nav-book {
+    background: linear-gradient(135deg, #C9A55C, #e0bc70);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all .3s;
+    white-space: nowrap;
+    font-family: 'Cairo',sans-serif;
+    box-shadow: 0 4px 16px rgba(201,165,92,0.3);
+}
+.nav-book:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,165,92,0.45); }
+.nav-login {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: all .3s;
+    font-family: 'Cairo',sans-serif;
+}
+nav.scrolled .nav-login { color: #1a2744; border-color: rgba(26,39,68,0.3); }
+.nav-login:hover { background: rgba(255,255,255,0.15); }
+.hamburger { display:none; background:none; border:none; color:#fff; font-size:1.4rem; }
+nav.scrolled .hamburger { color:#1a2744; }
+
+/* sections get photos */
+.section-photo-bg {
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    position: relative;
+}
+.section-photo-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+.section-photo-bg .container { position: relative; z-index: 1; }
+
+/* Service cards with photos */
+.service-card-img {
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    margin: -28px -28px 20px -28px;
+}
+.service-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+.service-card:hover .service-card-img img { transform: scale(1.05); }
+
+/* CTA photo */
+.cta-photo {
+    background: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1600&q=80') center/cover no-repeat;
+    position: relative;
+}
+.cta-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(245,237,224,0.92), rgba(212,196,168,0.88));
+}
+.cta-photo .container { position: relative; z-index: 1; }
+
+/* Testimonials photo bg */
+.testi-photo {
+    background: url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1600&q=80') center/cover fixed no-repeat;
+    position: relative;
+}
+.testi-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(245,237,224,0.93);
+}
+.testi-photo .container { position: relative; z-index: 1; }
+
+/* mobile */
+@media(max-width:900px) {
+    nav { top:12px; border-radius:20px; padding:10px 18px; width:calc(100% - 32px); }
+    .nav-links { display:none; }
+    .nav-links.open {
+        display:flex; flex-direction:column;
+        position:absolute; top:65px; right:0; left:0;
+        background:rgba(255,255,255,0.97);
+        border-radius:16px; padding:16px;
+        box-shadow:0 8px 32px rgba(0,0,0,.1);
+        border:1px solid rgba(201,165,92,0.2);
+        gap:4px;
+    }
+    .nav-links.open a { color:#1a2744 !important; }
+    .nav-book { display:none; }
+    .hamburger { display:block !important; }
+}
     </style>
 </head>
 <body>
@@ -35,40 +192,47 @@
     <div class="cursor-outline" id="cursorOutline"></div>
     <div class="loader" id="loader"><div class="loader-spinner"></div></div>
 
+    <!-- CRYSTAL FLOATING NAV -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="assets/logo.png" alt="چميلة" style="height:44px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
-                <span style="display:none">چميلة<span class="x">.</span></span>
+            <a href="#home" class="nav-logo">
+                <img src="Logo.png" alt="عيادات چميلة"
+                     onerror="this.outerHTML='<span style=\'font-size:20px;font-weight:900;color:#C9A55C;font-family:Cairo,sans-serif\'>چميلة</span>'">
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#contact">تواصلي معنا</a></li>
-                <li><a href="#pricing">الباقات</a></li>
-                <li><a href="#services">خدماتنا</a></li>
                 <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#team">فريقنا</a></li>
+                <li><a href="#contact">تواصلي معنا</a></li>
             </ul>
-            <div class="nav-auth-buttons">
-                <a href="./dashboard/register.html" class="btn-nav-signup">احجزي الآن</a>
-                <a href="./dashboard/index.html" class="btn-nav-login">دخول</a>
+            <div class="nav-auth">
+                <a href="./dashboard/index.html" class="nav-login">دخول</a>
+                <a href="./dashboard/register.html" class="nav-book">احجزي الآن</a>
             </div>
-            <div class="mobile-menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+            <button class="hamburger" id="hamburger" style="display:none"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="fade-in">جمالك في أيدي أمينة</h1>
-            <p class="tagline fade-in">چميلة.. عيشي الفرق</p>
-            <p class="hero-description fade-in">
-                عيادات چميلة في سوهاج — وجهتك الأولى للعناية بالبشرة والجمال.
-                ليزر، بوتوكس، فيلر، تبييض أسنان، وأكثر بأيدي متخصصين.
+    <!-- HERO — full photo -->
+    <section class="hero" id="home" style="
+        min-height:100vh;
+        display:flex; align-items:center; justify-content:center;
+        background: linear-gradient(135deg,rgba(26,39,68,0.88) 0%,rgba(45,66,112,0.75) 50%,rgba(26,39,68,0.88) 100%),
+                    url('https://images.unsplash.com/photo-1629909615184-74f495363b67?w=1600&q=80') center/cover no-repeat;
+        padding:140px 20px 80px; position:relative; overflow:hidden;
+    ">
+        <div class="hero-content" style="text-align:center;max-width:780px;position:relative;z-index:1">
+            <div class="fade-in" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,165,92,0.15);border:1px solid rgba(201,165,92,0.4);color:#C9A55C;padding:8px 22px;border-radius:40px;font-size:13px;font-weight:700;margin-bottom:28px;font-family:Cairo,sans-serif">
+                ✨ عيادات جمال ورعاية في سوهاج
+            </div>
+            <h1 class="fade-in" style="font-size:3.6rem;font-weight:900;color:#fff;margin-bottom:16px;line-height:1.2;font-family:Cairo,sans-serif">جمالك في أيدي أمينة</h1>
+            <p class="tagline fade-in" style="font-size:1.3rem;color:#C9A55C;margin-bottom:20px;font-weight:600;font-family:Cairo,sans-serif">چميلة.. عيشي الفرق</p>
+            <p class="hero-description fade-in" style="font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.78);margin-bottom:44px;font-family:Cairo,sans-serif">
+                عيادات چميلة في سوهاج — وجهتك الأولى للعناية بالبشرة والجمال. ليزر، بوتوكس، فيلر، تبييض أسنان وأكثر.
             </p>
             <div class="hero-buttons fade-in">
                 <a href="./dashboard/register.html" class="btn btn-primary">احجزي جلستك الآن</a>
-                <a href="https://wa.me/201149881909" class="btn btn-signup" target="_blank">
-                    <i class="fab fa-whatsapp"></i> واتساب
-                </a>
+                <a href="https://wa.me/201149881909" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
                 <a href="#services" class="btn btn-secondary">اكتشفي خدماتنا</a>
             </div>
         </div>
@@ -86,128 +250,94 @@
         </div>
     </section>
 
-    <!-- FEATURES -->
-    <section class="features section" id="features">
+    <!-- FEATURES — photo background -->
+    <section class="features section section-photo-bg" id="features" style="
+        background-image: linear-gradient(rgba(245,237,224,0.94),rgba(237,224,204,0.94)),
+                          url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80');
+        background-size:cover; background-position:center;
+    ">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title fade-in">لماذا چميلة؟</h2>
                 <p class="section-subtitle fade-in">نقدم لك تجربة تجميلية متكاملة باحتراف وأمان</p>
             </div>
             <div class="medical-grid">
-                <div class="medical-card fade-in">
-                    <i class="fas fa-user-md medical-icon"></i>
-                    <h3 class="medical-title">أطباء متخصصون</h3>
-                    <p class="medical-description">فريق طبي متكامل من أطباء الجلدية والتجميل ذوي الخبرة والكفاءة العالية</p>
-                </div>
-                <div class="medical-card fade-in">
-                    <i class="fas fa-microscope medical-icon"></i>
-                    <h3 class="medical-title">أحدث التقنيات</h3>
-                    <p class="medical-description">أجهزة ليزر ومعدات طبية حديثة معتمدة دولياً لأفضل النتائج</p>
-                </div>
-                <div class="medical-card fade-in">
-                    <i class="fas fa-shield-alt medical-icon"></i>
-                    <h3 class="medical-title">أمان 100%</h3>
-                    <p class="medical-description">جميع منتجاتنا وإجراءاتنا معتمدة طبياً مع الحرص الكامل على سلامتك</p>
-                </div>
-                <div class="medical-card fade-in">
-                    <i class="fas fa-heart medical-icon"></i>
-                    <h3 class="medical-title">رعاية شاملة</h3>
-                    <p class="medical-description">متابعة ما قبل وبعد الجلسة لضمان الحصول على أفضل النتائج</p>
-                </div>
-                <div class="medical-card fade-in">
-                    <i class="fas fa-calendar-check medical-icon"></i>
-                    <h3 class="medical-title">حجز سهل</h3>
-                    <p class="medical-description">احجزي موعدك أونلاين في دقيقة أو تواصلي معنا على واتساب</p>
-                </div>
-                <div class="medical-card fade-in">
-                    <i class="fas fa-map-marker-alt medical-icon"></i>
-                    <h3 class="medical-title">موقع مميز</h3>
-                    <p class="medical-description">في قلب سوهاج — برج ضيف الله الذهبي — شارع الجمهورية</p>
-                </div>
+                <div class="medical-card fade-in"><i class="fas fa-user-md medical-icon"></i><h3 class="medical-title">أطباء متخصصون</h3><p class="medical-description">فريق طبي متكامل من أطباء الجلدية والتجميل ذوي الخبرة العالية</p></div>
+                <div class="medical-card fade-in"><i class="fas fa-microscope medical-icon"></i><h3 class="medical-title">أحدث التقنيات</h3><p class="medical-description">أجهزة ليزر ومعدات طبية حديثة معتمدة دولياً لأفضل النتائج</p></div>
+                <div class="medical-card fade-in"><i class="fas fa-shield-alt medical-icon"></i><h3 class="medical-title">أمان 100%</h3><p class="medical-description">جميع منتجاتنا وإجراءاتنا معتمدة طبياً مع الحرص الكامل على سلامتك</p></div>
+                <div class="medical-card fade-in"><i class="fas fa-heart medical-icon"></i><h3 class="medical-title">رعاية شاملة</h3><p class="medical-description">متابعة ما قبل وبعد الجلسة لضمان الحصول على أفضل النتائج</p></div>
+                <div class="medical-card fade-in"><i class="fas fa-calendar-check medical-icon"></i><h3 class="medical-title">حجز سهل</h3><p class="medical-description">احجزي موعدك أونلاين في دقيقة أو تواصلي معنا على واتساب</p></div>
+                <div class="medical-card fade-in"><i class="fas fa-map-marker-alt medical-icon"></i><h3 class="medical-title">موقع مميز</h3><p class="medical-description">في قلب سوهاج — برج ضيف الله الذهبي — شارع الجمهورية</p></div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services section" id="services">
+    <!-- SERVICES — cards with photos -->
+    <section class="services section" id="services" style="background:#fff">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title fade-in">خدماتنا</h2>
                 <p class="section-subtitle fade-in">كل ما تحتاجينه للعناية بجمالك في مكان واحد</p>
             </div>
             <div class="services-grid">
+
                 <div class="service-card fade-in">
+                    <div class="service-card-img"><img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80" alt="ليزر" loading="lazy"></div>
                     <span class="service-number">01</span>
-                    <i class="fas fa-star-of-life service-icon"></i>
                     <h3 class="service-title">إزالة الشعر بالليزر</h3>
                     <p class="service-description">نتائج دائمة بأحدث أجهزة الليزر الآمنة لجميع أنواع البشرة</p>
-                    <ul class="service-features">
-                        <li>آمن لجميع أنواع البشرة</li>
-                        <li>نتائج دائمة مضمونة</li>
-                        <li>جلسات سريعة وغير مؤلمة</li>
-                    </ul>
+                    <ul class="service-features"><li>آمن لجميع أنواع البشرة</li><li>نتائج دائمة مضمونة</li><li>جلسات سريعة وغير مؤلمة</li></ul>
                 </div>
+
                 <div class="service-card fade-in">
+                    <div class="service-card-img"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="بوتوكس" loading="lazy"></div>
                     <span class="service-number">02</span>
-                    <i class="fas fa-syringe service-icon"></i>
                     <h3 class="service-title">بوتوكس وفيلر</h3>
                     <p class="service-description">حقن البوتوكس والفيلر لشد الوجه وملء التجاعيد بدقة عالية</p>
-                    <ul class="service-features">
-                        <li>منتجات أصلية معتمدة</li>
-                        <li>نتائج طبيعية ومميزة</li>
-                        <li>أطباء ذوو خبرة عالية</li>
-                    </ul>
+                    <ul class="service-features"><li>منتجات أصلية معتمدة</li><li>نتائج طبيعية ومميزة</li><li>أطباء ذوو خبرة عالية</li></ul>
                 </div>
+
                 <div class="service-card fade-in">
+                    <div class="service-card-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="بشرة" loading="lazy"></div>
                     <span class="service-number">03</span>
-                    <i class="fas fa-spa service-icon"></i>
                     <h3 class="service-title">العناية بالبشرة</h3>
                     <p class="service-description">تنظيف وتقشير وعلاج البشرة بأحدث التقنيات الطبية</p>
-                    <ul class="service-features">
-                        <li>علاج حب الشباب والندوب</li>
-                        <li>تفتيح وتوحيد لون البشرة</li>
-                        <li>جلسات الهيدرا فيشيال</li>
-                    </ul>
+                    <ul class="service-features"><li>علاج حب الشباب والندوب</li><li>تفتيح وتوحيد لون البشرة</li><li>جلسات الهيدرا فيشيال</li></ul>
                 </div>
+
                 <div class="service-card fade-in">
+                    <div class="service-card-img"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="أسنان" loading="lazy"></div>
                     <span class="service-number">04</span>
-                    <i class="fas fa-tooth service-icon"></i>
                     <h3 class="service-title">تبييض الأسنان</h3>
                     <p class="service-description">ابتسامة مشرقة بأحدث تقنيات تبييض الأسنان بالليزر</p>
-                    <ul class="service-features">
-                        <li>نتائج فورية في جلسة واحدة</li>
-                        <li>آمن وغير مؤلم</li>
-                        <li>يدوم لسنوات</li>
-                    </ul>
+                    <ul class="service-features"><li>نتائج فورية في جلسة واحدة</li><li>آمن وغير مؤلم</li><li>يدوم لسنوات</li></ul>
                 </div>
+
                 <div class="service-card fade-in">
+                    <div class="service-card-img"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80" alt="شد وجه" loading="lazy"></div>
                     <span class="service-number">05</span>
-                    <i class="fas fa-magic service-icon"></i>
                     <h3 class="service-title">شد الوجه</h3>
                     <p class="service-description">جلسات شد الوجه غير الجراحية لإطلالة أصغر وأكثر إشراقاً</p>
-                    <ul class="service-features">
-                        <li>بدون جراحة أو تخدير</li>
-                        <li>نتائج فورية وتراكمية</li>
-                        <li>آمن ومضمون</li>
-                    </ul>
+                    <ul class="service-features"><li>بدون جراحة أو تخدير</li><li>نتائج فورية وتراكمية</li><li>آمن ومضمون</li></ul>
                 </div>
+
                 <div class="service-card fade-in">
+                    <div class="service-card-img"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="تغذية" loading="lazy"></div>
                     <span class="service-number">06</span>
-                    <i class="fas fa-heartbeat service-icon"></i>
                     <h3 class="service-title">التغذية العلاجية</h3>
                     <p class="service-description">برامج تغذية مخصصة لإنقاص الوزن والحصول على جسم صحي</p>
-                    <ul class="service-features">
-                        <li>برنامج غذائي مخصص</li>
-                        <li>متابعة أسبوعية مستمرة</li>
-                        <li>نتائج حقيقية ومستدامة</li>
-                    </ul>
+                    <ul class="service-features"><li>برنامج غذائي مخصص</li><li>متابعة أسبوعية مستمرة</li><li>نتائج حقيقية ومستدامة</li></ul>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- TEAM -->
-    <section class="team section" id="team">
+    <!-- TEAM — beige bg + photo -->
+    <section class="team section" id="team" style="
+        background: linear-gradient(rgba(245,237,224,0.95),rgba(245,237,224,0.95)),
+                    url('https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=1600&q=80') center/cover;
+    ">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title fade-in">فريقنا الطبي</h2>
@@ -236,55 +366,35 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials section" id="testimonials">
+    <!-- TESTIMONIALS — photo bg -->
+    <section class="testimonials section testi-photo" id="testimonials">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title fade-in">آراء عميلاتنا</h2>
                 <p class="section-subtitle fade-in">تجارب حقيقية من عميلات سعيدات</p>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial fade-in">
-                    <p class="testimonial-text">"تجربتي في عيادات چميلة كانت رائعة من البداية للنهاية. الدكاترة محترفون والنتائج فاقت توقعاتي. أنصح كل واحدة تجرب!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">س.م</div>
-                        <div class="author-info"><h4>سارة محمود</h4><p>سوهاج</p></div>
-                    </div>
-                </div>
-                <div class="testimonial fade-in">
-                    <p class="testimonial-text">"عملت ليزر وبوتوكس والنتيجة خيالية. الطاقم الطبي محترف جداً والمكان نظيف ومريح. هرجع تاني بالتأكيد!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ن.أ</div>
-                        <div class="author-info"><h4>نورهان أحمد</h4><p>سوهاج</p></div>
-                    </div>
-                </div>
-                <div class="testimonial fade-in">
-                    <p class="testimonial-text">"برنامج التغذية مع د. فريدة غير حياتي. فقدت 15 كيلو في 3 شهور والمتابعة كانت ممتازة. شكراً چميلة!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ر.ع</div>
-                        <div class="author-info"><h4>ريم علي</h4><p>سوهاج</p></div>
-                    </div>
-                </div>
+                <div class="testimonial fade-in"><p class="testimonial-text">"تجربتي في عيادات چميلة كانت رائعة من البداية للنهاية. الدكاترة محترفون والنتائج فاقت توقعاتي. أنصح كل واحدة تجرب!"</p><div class="testimonial-author"><div class="author-avatar">س.م</div><div class="author-info"><h4>سارة محمود</h4><p>سوهاج</p></div></div></div>
+                <div class="testimonial fade-in"><p class="testimonial-text">"عملت ليزر وبوتوكس والنتيجة خيالية. الطاقم الطبي محترف جداً والمكان نظيف ومريح. هرجع تاني بالتأكيد!"</p><div class="testimonial-author"><div class="author-avatar">ن.أ</div><div class="author-info"><h4>نورهان أحمد</h4><p>سوهاج</p></div></div></div>
+                <div class="testimonial fade-in"><p class="testimonial-text">"برنامج التغذية مع د. فريدة غير حياتي. فقدت 15 كيلو في 3 شهور والمتابعة كانت ممتازة. شكراً چميلة!"</p><div class="testimonial-author"><div class="author-avatar">ر.ع</div><div class="author-info"><h4>ريم علي</h4><p>سوهاج</p></div></div></div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta section">
-        <div class="container">
-            <h2 class="fade-in">جاهزة تعيشي الفرق؟</h2>
-            <p class="fade-in">احجزي جلستك الآن واحصلي على استشارة مجانية مع أطباء چميلة</p>
+    <!-- CTA — photo bg -->
+    <section class="cta section cta-photo" id="cta">
+        <div class="container" style="text-align:center">
+            <h2 class="fade-in" style="font-size:2.4rem;color:#1a2744;margin-bottom:16px">جاهزة تعيشي الفرق؟</h2>
+            <p class="fade-in" style="color:#6b5e4e;margin-bottom:36px;font-size:1.05rem">احجزي جلستك الآن واحصلي على استشارة مجانية مع أطباء چميلة</p>
             <div class="hero-buttons fade-in">
                 <a href="./dashboard/register.html" class="btn btn-primary">احجزي جلستك الآن</a>
-                <a href="https://wa.me/201149881909" class="btn btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> تواصلي عبر واتساب
-                </a>
+                <a href="https://wa.me/201149881909" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
             </div>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="contact section" id="contact">
+    <section class="contact section" id="contact" style="background:#fff">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title fade-in">تواصلي معنا</h2>
@@ -293,29 +403,17 @@
             <div class="contact-container">
                 <div class="contact-info fade-in">
                     <h3>معلومات التواصل</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div class="contact-details"><h4>الهاتف</h4><p dir="ltr">01149881909 | 01556386734 | 01202999991</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                        <div class="contact-details"><h4>واتساب</h4><p dir="ltr">01149881909</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-details"><h4>العنوان</h4><p>سوهاج — شارع الجمهورية — برج صلاح ضيف الله الذهبي — أعلى ماكدونالدز</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fab fa-facebook"></i></div>
-                        <div class="contact-details"><h4>فيسبوك</h4><p><a href="https://www.facebook.com/jamelaclinics" target="_blank" style="color:inherit">عيادات چميلة</a></p></div>
-                    </div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div class="contact-details"><h4>الهاتف</h4><p dir="ltr">01149881909 | 01556386734 | 01202999991</p></div></div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fab fa-whatsapp"></i></div><div class="contact-details"><h4>واتساب</h4><p dir="ltr">01149881909</p></div></div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-details"><h4>العنوان</h4><p>سوهاج — شارع الجمهورية — برج صلاح ضيف الله الذهبي — أعلى ماكدونالدز</p></div></div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fab fa-facebook"></i></div><div class="contact-details"><h4>فيسبوك</h4><p><a href="https://www.facebook.com/jamelaclinics" target="_blank" style="color:inherit">عيادات چميلة</a></p></div></div>
                 </div>
                 <form class="contact-form fade-in" id="contactForm">
-                    <h3 style="margin-bottom:30px;color:#1a2744">أرسلي لنا رسالة</h3>
+                    <h3 style="margin-bottom:28px;color:#1a2744;font-size:1.3rem;font-weight:700">أرسلي لنا رسالة</h3>
                     <div class="form-group"><label>الاسم الكامل *</label><input type="text" name="name" required></div>
                     <div class="form-group"><label>رقم الهاتف *</label><input type="tel" name="phone" required></div>
                     <div class="form-group"><label>الخدمة المطلوبة</label>
-                        <select name="service" style="width:100%;padding:15px;background:#faf7f2;border:1px solid #e8d5bc;border-radius:8px;color:#1a2744;font-size:1rem;font-family:inherit">
+                        <select name="service" style="width:100%;padding:13px;background:#fff;border:1.5px solid #e8d5bc;border-radius:10px;color:#1a2744;font-size:.95rem;font-family:'Cairo',sans-serif">
                             <option value="">اختاري الخدمة</option>
                             <option>إزالة الشعر بالليزر</option>
                             <option>بوتوكس وفيلر</option>
@@ -326,20 +424,18 @@
                         </select>
                     </div>
                     <div class="form-group"><label>رسالتك</label><textarea name="message" placeholder="أخبرينا عن احتياجك..."></textarea></div>
-                    <button type="submit" class="btn btn-primary" style="width:100%">إرسال الرسالة</button>
+                    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;border:none">إرسال الرسالة</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/201149881909" class="whatsapp-float" target="_blank" title="تواصلي معنا عبر واتساب">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/201149881909" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>عيادات <span class="x">چميلة</span></h3>
+                <h3>عيادات <span style="color:#C9A55C">چميلة</span></h3>
                 <p>وجهتك الأولى للجمال والعناية في سوهاج. فريق طبي متخصص وتقنيات حديثة في خدمتك.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/jamelaclinics" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -361,7 +457,6 @@
                 <ul>
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#pricing">الباقات</a></li>
                     <li><a href="#team">فريقنا</a></li>
                     <li><a href="./dashboard/">تسجيل الدخول</a></li>
                     <li><a href="./dashboard/register.html">احجزي الآن</a></li>
@@ -369,14 +464,14 @@
             </div>
             <div class="footer-section">
                 <h3>تواصلي معنا</h3>
-                <p><i class="fas fa-phone"></i> <span dir="ltr">01149881909</span></p>
-                <p><i class="fas fa-phone"></i> <span dir="ltr">01556386734</span></p>
-                <p><i class="fab fa-whatsapp"></i> <span dir="ltr">01149881909</span></p>
-                <p><i class="fas fa-map-marker-alt"></i> سوهاج — شارع الجمهورية</p>
+                <p><i class="fas fa-phone" style="color:#C9A55C;margin-left:6px"></i> <span dir="ltr">01149881909</span></p>
+                <p><i class="fas fa-phone" style="color:#C9A55C;margin-left:6px"></i> <span dir="ltr">01556386734</span></p>
+                <p><i class="fab fa-whatsapp" style="color:#25d366;margin-left:6px"></i> <span dir="ltr">01149881909</span></p>
+                <p><i class="fas fa-map-marker-alt" style="color:#C9A55C;margin-left:6px"></i> سوهاج — شارع الجمهورية</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 عيادات چميلة. جميع الحقوق محفوظة. | صُمّم بواسطة <a href="https://pioneersxai.github.io/PioneersX-agency-Egy-Sa/" style="color:#C9A55C">PioneersX ⚡</a></p>
+            <p>© 2026 عيادات چميلة. جميع الحقوق محفوظة. | صُمّم بواسطة <a href="https://pioneersxai.github.io/PioneersX-agency-Egy-Sa/" style="color:#C9A55C">PioneersX ⚡</a></p>
         </div>
     </footer>
 
@@ -386,5 +481,30 @@
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/cursor.js"></script>
+    <script>
+        // Nav scroll
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+            document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+        });
+
+        // Smooth scroll
+        document.addEventListener('click', e => {
+            const a = e.target.closest('a[href^="#"]');
+            if (!a) return;
+            const id = a.getAttribute('href').slice(1);
+            const t = document.getElementById(id);
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); document.getElementById('navLinks').classList.remove('open'); }
+        });
+
+        // Mobile menu
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // Loader
+        window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 500));
+    </script>
 </body>
 </html>
