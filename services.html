@@ -1,1 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدماتنا | Ritaj Specialized Hospital</title>
+  <link rel="icon" type="image/png" href="assets/Logo.jpg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/Logo.jpg" alt="Ritaj" onerror="this.outerHTML='<span class=logo-text>e<span>Ritaj</span></span>'">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"       data-ar="الرئيسية"   data-en="Home">الرئيسية</a></li>
+        <li><a href="services.html"    data-ar="خدماتنا"    data-en="Services" class="active">خدماتنا</a></li>
+        <li><a href="doctors.html"     data-ar="أطباؤنا"    data-en="Doctors">أطباؤنا</a></li>
+        <li><a href="appointment.html" data-ar="احجز موعد"  data-en="Appointment">احجز موعد</a></li>
+        <li><a href="contact.html"     data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()"><i class="fas fa-globe"></i><span id="langLabel">EN</span></button>
+        <a href="appointment.html" class="nav-cta" data-ar="احجز موعد" data-en="Book Now">احجز موعد</a>
+        <a href="dashboard/index.html" class="nav-login" data-ar="دخول" data-en="Login">دخول</a>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 data-ar="خدماتنا الطبية" data-en="Our Medical Services">خدماتنا الطبية</h1>
+      <p data-ar="صرح طبي متكامل يضم أحدث التخصصات والأقسام الطبية تحت سقف واحد" data-en="A comprehensive medical facility with the latest specialties and departments under one roof">صرح طبي متكامل يضم أحدث التخصصات والأقسام الطبية تحت سقف واحد</p>
+      <div class="breadcrumb">
+        <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <i class="fas fa-chevron-left"></i>
+        <span data-ar="خدماتنا" data-en="Services">خدماتنا</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPARTMENTS -->
+  <section class="section">
+    <div class="container">
+      <div class="departments-grid">
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon red"><i class="fas fa-ambulance"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="وحدة الطوارئ" data-en="Emergency Unit">وحدة الطوارئ</h3>
+            <p data-ar="طوارئ على مدار الساعة مع فريق طبي متكامل جاهز للتدخل الفوري في أي حالة طارئة" data-en="24/7 emergency with a complete medical team ready for immediate intervention in any emergency">طوارئ على مدار الساعة مع فريق طبي متكامل جاهز للتدخل الفوري في أي حالة طارئة</p>
+            <ul class="dept-features">
+              <li data-ar="متاح 24 ساعة / 7 أيام" data-en="Available 24/7">متاح 24 ساعة / 7 أيام</li>
+              <li data-ar="فريق طبي متكامل" data-en="Complete medical team">فريق طبي متكامل</li>
+              <li data-ar="أجهزة إنعاش حديثة" data-en="Modern resuscitation equipment">أجهزة إنعاش حديثة</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-heartbeat"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="العناية المركزة" data-en="Intensive Care Unit">العناية المركزة</h3>
+            <p data-ar="وحدة عناية مركزة مجهزة بأحدث الأجهزة الطبية لرعاية الحالات الحرجة" data-en="ICU equipped with the latest medical devices for critical care">وحدة عناية مركزة مجهزة بأحدث الأجهزة الطبية لرعاية الحالات الحرجة</p>
+            <ul class="dept-features">
+              <li data-ar="أجهزة مراقبة متطورة" data-en="Advanced monitoring devices">أجهزة مراقبة متطورة</li>
+              <li data-ar="إشراف طبي مستمر" data-en="Continuous medical supervision">إشراف طبي مستمر</li>
+              <li data-ar="أسرة عناية متخصصة" data-en="Specialized care beds">أسرة عناية متخصصة</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-procedures"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="قسم العمليات" data-en="Surgery Department">قسم العمليات</h3>
+            <p data-ar="غرف عمليات معقمة بالكامل لجميع أنواع الجراحات العامة والتخصصية" data-en="Fully sterilized operating rooms for all types of general and specialized surgeries">غرف عمليات معقمة بالكامل لجميع أنواع الجراحات العامة والتخصصية</p>
+            <ul class="dept-features">
+              <li data-ar="جراحة عامة" data-en="General surgery">جراحة عامة</li>
+              <li data-ar="جراحة تخصصية" data-en="Specialized surgery">جراحة تخصصية</li>
+              <li data-ar="تخدير متكامل" data-en="Complete anesthesia">تخدير متكامل</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-baby"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="النساء والولادة" data-en="Obstetrics & Gynecology">النساء والولادة</h3>
+            <p data-ar="رعاية متكاملة للمرأة خلال فترة الحمل والولادة وما بعدها" data-en="Comprehensive care for women during pregnancy, childbirth and postpartum">رعاية متكاملة للمرأة خلال فترة الحمل والولادة وما بعدها</p>
+            <ul class="dept-features">
+              <li data-ar="متابعة الحمل" data-en="Pregnancy follow-up">متابعة الحمل</li>
+              <li data-ar="غرف ولادة متخصصة" data-en="Specialized delivery rooms">غرف ولادة متخصصة</li>
+              <li data-ar="رعاية ما بعد الولادة" data-en="Postpartum care">رعاية ما بعد الولادة</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-tooth"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="قسم الأسنان" data-en="Dental Department">قسم الأسنان</h3>
+            <p data-ar="علاج وتجميل الأسنان بأحدث التقنيات العالمية على يد أطباء متخصصين" data-en="Dental treatment and cosmetics with the latest global technologies by specialist doctors">علاج وتجميل الأسنان بأحدث التقنيات العالمية على يد أطباء متخصصين</p>
+            <ul class="dept-features">
+              <li data-ar="حشوات وتركيبات" data-en="Fillings & prosthetics">حشوات وتركيبات</li>
+              <li data-ar="تبييض وتجميل" data-en="Whitening & cosmetics">تبييض وتجميل</li>
+              <li data-ar="زراعة الأسنان" data-en="Dental implants">زراعة الأسنان</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-eye"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="طب وجراحة العيون" data-en="Ophthalmology & Eye Surgery">طب وجراحة العيون</h3>
+            <p data-ar="تشخيص وعلاج جميع أمراض العين بأحدث أجهزة الفحص والجراحة" data-en="Diagnosis and treatment of all eye diseases with the latest examination and surgery devices">تشخيص وعلاج جميع أمراض العين بأحدث أجهزة الفحص والجراحة</p>
+            <ul class="dept-features">
+              <li data-ar="جراحة الليزك" data-en="LASIK surgery">جراحة الليزك</li>
+              <li data-ar="علاج المياه" data-en="Cataract treatment">علاج المياه</li>
+              <li data-ar="فحص قاع العين" data-en="Fundus examination">فحص قاع العين</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-x-ray"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="قسم الأشعة" data-en="Radiology Department">قسم الأشعة</h3>
+            <p data-ar="أشعة تشخيصية متكاملة بأحدث الأجهزة لدقة تشخيصية عالية" data-en="Comprehensive diagnostic radiology with the latest devices for high diagnostic accuracy">أشعة تشخيصية متكاملة بأحدث الأجهزة لدقة تشخيصية عالية</p>
+            <ul class="dept-features">
+              <li data-ar="أشعة سينية وسونار" data-en="X-ray & ultrasound">أشعة سينية وسونار</li>
+              <li data-ar="CT Scan متطور" data-en="Advanced CT Scan">CT Scan متطور</li>
+              <li data-ar="MRI بأحدث الأجهزة" data-en="Latest MRI devices">MRI بأحدث الأجهزة</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-flask"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="معامل ريتاج" data-en="Ritaj Labs">معامل ريتاج</h3>
+            <p data-ar="تحاليل طبية دقيقة وسريعة بأعلى معايير الجودة والدقة" data-en="Accurate and fast medical tests with the highest quality and precision standards">تحاليل طبية دقيقة وسريعة بأعلى معايير الجودة والدقة</p>
+            <ul class="dept-features">
+              <li data-ar="+20 تحليل معتمد" data-en="+20 certified tests">+20 تحليل معتمد</li>
+              <li data-ar="نتائج سريعة" data-en="Fast results">نتائج سريعة</li>
+              <li data-ar="دقة عالية" data-en="High accuracy">دقة عالية</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-pills"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="صيدلية ريتاج" data-en="Ritaj Pharmacy">صيدلية ريتاج</h3>
+            <p data-ar="صيدلية متكاملة داخل المستشفى تعمل على مدار الساعة بجميع الأدوية والمستلزمات" data-en="Full pharmacy inside the hospital operating around the clock with all medicines and supplies">صيدلية متكاملة داخل المستشفى تعمل على مدار الساعة بجميع الأدوية والمستلزمات</p>
+            <ul class="dept-features">
+              <li data-ar="متاحة 24 ساعة" data-en="Available 24/7">متاحة 24 ساعة</li>
+              <li data-ar="جميع الأدوية" data-en="All medicines">جميع الأدوية</li>
+              <li data-ar="أسعار مناسبة" data-en="Reasonable prices">أسعار مناسبة</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-brain"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="أمراض الباطنة" data-en="Internal Medicine">أمراض الباطنة</h3>
+            <p data-ar="تشخيص وعلاج جميع أمراض الجهاز الهضمي والكبد والقلب والكلى" data-en="Diagnosis and treatment of all digestive, liver, heart and kidney diseases">تشخيص وعلاج جميع أمراض الجهاز الهضمي والكبد والقلب والكلى</p>
+            <ul class="dept-features">
+              <li data-ar="أمراض الكبد والقولون" data-en="Liver & colon diseases">أمراض الكبد والقولون</li>
+              <li data-ar="أمراض القلب" data-en="Heart diseases">أمراض القلب</li>
+              <li data-ar="أمراض الكلى" data-en="Kidney diseases">أمراض الكلى</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-diagnoses"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="أمراض الغدد والسكر" data-en="Endocrinology & Diabetes">أمراض الغدد والسكر</h3>
+            <p data-ar="تشخيص وعلاج اضطرابات الغدد الصماء ومرض السكري بأحدث البروتوكولات" data-en="Diagnosis and treatment of endocrine disorders and diabetes with the latest protocols">تشخيص وعلاج اضطرابات الغدد الصماء ومرض السكري بأحدث البروتوكولات</p>
+            <ul class="dept-features">
+              <li data-ar="السكري من النوع 1 و2" data-en="Type 1 & 2 Diabetes">السكري من النوع 1 و2</li>
+              <li data-ar="أمراض الغدة الدرقية" data-en="Thyroid diseases">أمراض الغدة الدرقية</li>
+              <li data-ar="اضطرابات الهرمونات" data-en="Hormonal disorders">اضطرابات الهرمونات</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+        <div class="dept-card fade-in">
+          <div class="dept-icon green"><i class="fas fa-spa"></i></div>
+          <div class="dept-body">
+            <h3 data-ar="قسم التجميل" data-en="Cosmetics Department">قسم التجميل</h3>
+            <p data-ar="خدمات تجميلية متكاملة بأيدي أطباء متخصصين وأحدث التقنيات" data-en="Comprehensive cosmetic services by specialist doctors with the latest technologies">خدمات تجميلية متكاملة بأيدي أطباء متخصصين وأحدث التقنيات</p>
+            <ul class="dept-features">
+              <li data-ar="بوتوكس وفيلر" data-en="Botox & Fillers">بوتوكس وفيلر</li>
+              <li data-ar="ليزر تجميلي" data-en="Cosmetic laser">ليزر تجميلي</li>
+              <li data-ar="علاجات البشرة" data-en="Skin treatments">علاجات البشرة</li>
+            </ul>
+            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="book-cta">
+    <div class="container">
+      <div class="book-cta-inner">
+        <div>
+          <h2 data-ar="احجز موعدك مع أفضل الأطباء" data-en="Book Your Appointment with the Best Doctors">احجز موعدك مع أفضل الأطباء</h2>
+          <p data-ar="سجل حسابك وابدأ رحلتك الصحية مع مستشفى ريتاج التخصصي" data-en="Register and start your health journey with Ritaj Specialized Hospital">سجل حسابك وابدأ رحلتك الصحية مع مستشفى ريتاج التخصصي</p>
+        </div>
+        <div class="book-cta-btns">
+          <a href="appointment.html" class="btn btn-white" data-ar="احجز موعد" data-en="Book Now">احجز موعد</a>
+          <a href="tel:01503808877" class="btn btn-outline-white"><i class="fas fa-phone"></i> 01503808877</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/Logo.jpg" alt="Ritaj" style="height:60px;margin-bottom:16px" onerror="this.outerHTML='<div style=font-size:24px;font-weight:900;color:#fff>eRitaj</div>'">
+          <p data-ar="صرح طبي متكامل في مدينة سوهاج الجديدة" data-en="A comprehensive medical facility in New Sohag">صرح طبي متكامل في مدينة سوهاج الجديدة</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/RitajHospital" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ritajhospital/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/201503808877" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4>
+          <ul>
+            <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+            <li><a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+            <li><a href="doctors.html" data-ar="أطباؤنا" data-en="Doctors">أطباؤنا</a></li>
+            <li><a href="appointment.html" data-ar="احجز موعد" data-en="Book">احجز موعد</a></li>
+            <li><a href="contact.html" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4 data-ar="أقسامنا" data-en="Departments">أقسامنا</h4>
+          <ul>
+            <li><a href="services.html" data-ar="وحدة الطوارئ" data-en="Emergency">وحدة الطوارئ</a></li>
+            <li><a href="services.html" data-ar="العناية المركزة" data-en="ICU">العناية المركزة</a></li>
+            <li><a href="services.html" data-ar="قسم الأسنان" data-en="Dental">قسم الأسنان</a></li>
+            <li><a href="services.html" data-ar="معامل ريتاج" data-en="Labs">معامل ريتاج</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h4>
+          <p><i class="fas fa-phone"></i><a href="tel:01503808877" dir="ltr">01503808877</a></p>
+          <p><i class="fas fa-phone"></i><a href="tel:01503405450" dir="ltr">01503405450</a></p>
+          <p><i class="fab fa-whatsapp"></i><a href="https://wa.me/201503808877" target="_blank" dir="ltr">01503808877</a></p>
+          <p><i class="fas fa-map-marker-alt"></i><span data-ar="سوهاج الجديدة" data-en="New Sohag">سوهاج الجديدة</span></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Ritaj Specialized Hospital | <a href="https://pioneersxai.github.io/PioneersX-agency-Egy-Sa/" target="_blank">PioneersX ⚡</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/201503808877" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+
+  <script>
+  let currentLang = 'ar';
+  function toggleLang() {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    const isAr = currentLang === 'ar';
+    document.getElementById('html-root').lang = currentLang;
+    document.getElementById('html-root').dir = isAr ? 'rtl' : 'ltr';
+    document.getElementById('langLabel').textContent = isAr ? 'EN' : 'عر';
+    document.querySelectorAll('[data-ar]').forEach(el => { el.textContent = isAr ? el.dataset.ar : el.dataset.en; });
+    localStorage.setItem('ritaj-lang', currentLang);
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('ritaj-lang');
+    if (saved && saved !== 'ar') toggleLang();
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('show', scrollY > 400);
+  });
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.getElementById('scrollTop').addEventListener('click', e => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
