@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>احجز موعد | Ritaj Specialized Hospital</title>
+  <link rel="icon" type="image/png" href="assets/Logo.jpg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/Logo.jpg" alt="Ritaj" onerror="this.outerHTML='<span class=logo-text>e<span>Ritaj</span></span>'">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"       data-ar="الرئيسية"   data-en="Home">الرئيسية</a></li>
+        <li><a href="services.html"    data-ar="خدماتنا"    data-en="Services">خدماتنا</a></li>
+        <li><a href="doctors.html"     data-ar="أطباؤنا"    data-en="Doctors">أطباؤنا</a></li>
+        <li><a href="appointment.html" data-ar="احجز موعد"  data-en="Appointment" class="active">احجز موعد</a></li>
+        <li><a href="contact.html"     data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()"><i class="fas fa-globe"></i><span id="langLabel">EN</span></button>
+        <a href="dashboard/index.html" class="nav-login" data-ar="دخول" data-en="Login">دخول</a>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 data-ar="احجز موعدك" data-en="Book Your Appointment">احجز موعدك</h1>
+      <p data-ar="احجز موعدك مع أفضل الأطباء بسهولة وسرعة" data-en="Book your appointment with the best doctors easily and quickly">احجز موعدك مع أفضل الأطباء بسهولة وسرعة</p>
+      <div class="breadcrumb">
+        <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <i class="fas fa-chevron-left"></i>
+        <span data-ar="احجز موعد" data-en="Book Appointment">احجز موعد</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="appointment-layout">
+
+        <!-- BOOKING FORM -->
+        <div class="appt-form-wrap">
+          <div class="appt-form-header">
+            <h2 data-ar="بيانات الحجز" data-en="Booking Details">بيانات الحجز</h2>
+            <p data-ar="أدخل بياناتك وسيتواصل معك فريقنا لتأكيد الموعد" data-en="Enter your details and our team will contact you to confirm the appointment">أدخل بياناتك وسيتواصل معك فريقنا لتأكيد الموعد</p>
+          </div>
+
+          <form id="appointmentForm" class="appt-form">
+            <div class="form-row">
+              <div class="fg">
+                <label data-ar="الاسم الكامل *" data-en="Full Name *">الاسم الكامل *</label>
+                <input type="text" id="fullName" required placeholder="" data-ar-placeholder="اسمك الكامل" data-en-placeholder="Your full name">
+              </div>
+              <div class="fg">
+                <label data-ar="رقم الهاتف *" data-en="Phone Number *">رقم الهاتف *</label>
+                <input type="tel" id="phone" required placeholder="" data-ar-placeholder="01xxxxxxxxx" data-en-placeholder="01xxxxxxxxx" dir="ltr">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="fg">
+                <label data-ar="القسم الطبي *" data-en="Department *">القسم الطبي *</label>
+                <select id="department" required>
+                  <option value="" data-ar="اختر القسم" data-en="Select Department">اختر القسم</option>
+                  <option value="emergency"   data-ar="وحدة الطوارئ"    data-en="Emergency Unit">وحدة الطوارئ</option>
+                  <option value="icu"         data-ar="العناية المركزة"  data-en="ICU">العناية المركزة</option>
+                  <option value="surgery"     data-ar="قسم العمليات"     data-en="Surgery">قسم العمليات</option>
+                  <option value="obstetrics"  data-ar="النساء والولادة"  data-en="Obstetrics">النساء والولادة</option>
+                  <option value="dental"      data-ar="قسم الأسنان"      data-en="Dental">قسم الأسنان</option>
+                  <option value="eyes"        data-ar="طب العيون"        data-en="Ophthalmology">طب العيون</option>
+                  <option value="radiology"   data-ar="قسم الأشعة"       data-en="Radiology">قسم الأشعة</option>
+                  <option value="labs"        data-ar="معامل ريتاج"      data-en="Ritaj Labs">معامل ريتاج</option>
+                  <option value="internal"    data-ar="أمراض الباطنة"    data-en="Internal Medicine">أمراض الباطنة</option>
+                  <option value="endocrine"   data-ar="الغدد والسكر"     data-en="Endocrinology">الغدد والسكر</option>
+                  <option value="cosmetics"   data-ar="قسم التجميل"      data-en="Cosmetics">قسم التجميل</option>
+                  <option value="pharmacy"    data-ar="صيدلية ريتاج"     data-en="Ritaj Pharmacy">صيدلية ريتاج</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label data-ar="التاريخ المفضل *" data-en="Preferred Date *">التاريخ المفضل *</label>
+                <input type="date" id="apptDate" required min="">
+              </div>
+            </div>
+
+            <div class="fg">
+              <label data-ar="الوقت المفضل" data-en="Preferred Time">الوقت المفضل</label>
+              <select id="apptTime">
+                <option value="" data-ar="اختر الوقت" data-en="Select Time">اختر الوقت</option>
+                <option value="morning"   data-ar="الصباح (9ص - 12م)"   data-en="Morning (9AM - 12PM)">الصباح (9ص - 12م)</option>
+                <option value="afternoon" data-ar="الظهيرة (12م - 4م)"  data-en="Afternoon (12PM - 4PM)">الظهيرة (12م - 4م)</option>
+                <option value="evening"   data-ar="المساء (4م - 9م)"    data-en="Evening (4PM - 9PM)">المساء (4م - 9م)</option>
+              </select>
+            </div>
+
+            <div class="fg">
+              <label data-ar="ملاحظات إضافية" data-en="Additional Notes">ملاحظات إضافية</label>
+              <textarea id="notes" rows="4" placeholder="" data-ar-placeholder="أي معلومات إضافية تساعد الطبيب..." data-en-placeholder="Any additional information to help the doctor..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <i class="fas fa-calendar-check"></i>
+              <span data-ar="تأكيد الحجز" data-en="Confirm Booking">تأكيد الحجز</span>
+            </button>
+
+            <!-- Success message -->
+            <div class="appt-success" id="apptSuccess" style="display:none">
+              <i class="fas fa-check-circle"></i>
+              <h3 data-ar="تم استلام طلب حجزك بنجاح!" data-en="Your booking request has been received!">تم استلام طلب حجزك بنجاح!</h3>
+              <p data-ar="سيتواصل معك فريقنا خلال ساعتين لتأكيد الموعد" data-en="Our team will contact you within 2 hours to confirm the appointment">سيتواصل معك فريقنا خلال ساعتين لتأكيد الموعد</p>
+              <a href="https://wa.me/201503808877" class="btn btn-primary" target="_blank" data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">تواصل عبر واتساب</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- SIDEBAR INFO -->
+        <div class="appt-sidebar">
+          <div class="appt-info-card">
+            <h3 data-ar="معلومات التواصل" data-en="Contact Information">معلومات التواصل</h3>
+            <div class="appt-contact-item">
+              <div class="aci-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <span data-ar="هاتف" data-en="Phone">هاتف</span>
+                <a href="tel:01503808877" dir="ltr">01503808877</a>
+              </div>
+            </div>
+            <div class="appt-contact-item">
+              <div class="aci-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <span data-ar="هاتف 2" data-en="Phone 2">هاتف 2</span>
+                <a href="tel:01503405450" dir="ltr">01503405450</a>
+              </div>
+            </div>
+            <div class="appt-contact-item">
+              <div class="aci-icon green"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <span>WhatsApp</span>
+                <a href="https://wa.me/201503808877" target="_blank" dir="ltr">01503808877</a>
+              </div>
+            </div>
+            <div class="appt-contact-item">
+              <div class="aci-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <span data-ar="طوارئ" data-en="Emergency">طوارئ</span>
+                <span data-ar="24 ساعة / 7 أيام" data-en="24/7">24 ساعة / 7 أيام</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="appt-info-card">
+            <h3 data-ar="لديك حساب؟" data-en="Have an Account?">لديك حساب؟</h3>
+            <p data-ar="سجل دخولك لمتابعة مواعيدك وزياراتك السابقة" data-en="Login to track your appointments and past visits">سجل دخولك لمتابعة مواعيدك وزياراتك السابقة</p>
+            <a href="dashboard/index.html" class="btn btn-outline btn-full" style="margin-top:16px;justify-content:center" data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</a>
+            <a href="dashboard/register.html" class="btn btn-primary btn-full" style="margin-top:10px;justify-content:center" data-ar="إنشاء حساب جديد" data-en="Create New Account">إنشاء حساب جديد</a>
+          </div>
+
+          <div class="appt-info-card emergency-card">
+            <i class="fas fa-ambulance"></i>
+            <h3 data-ar="حالة طارئة؟" data-en="Emergency?">حالة طارئة؟</h3>
+            <p data-ar="اتصل بنا فوراً — طوارئ على مدار الساعة" data-en="Call us immediately — 24/7 emergency">اتصل بنا فوراً — طوارئ على مدار الساعة</p>
+            <a href="tel:01503808877" class="btn btn-red btn-full" style="margin-top:16px;justify-content:center">
+              <i class="fas fa-phone"></i> 01503808877
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/Logo.jpg" alt="Ritaj" style="height:60px;margin-bottom:16px" onerror="this.outerHTML='<div style=font-size:24px;font-weight:900;color:#fff>eRitaj</div>'">
+          <p data-ar="صرح طبي متكامل في مدينة سوهاج الجديدة" data-en="A comprehensive medical facility in New Sohag">صرح طبي متكامل في مدينة سوهاج الجديدة</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/RitajHospital" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ritajhospital/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/201503808877" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-links"><h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4><ul><li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li><li><a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li><li><a href="doctors.html" data-ar="أطباؤنا" data-en="Doctors">أطباؤنا</a></li><li><a href="contact.html" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li></ul></div>
+        <div class="footer-links"><h4 data-ar="أقسامنا" data-en="Departments">أقسامنا</h4><ul><li><a href="services.html" data-ar="طوارئ" data-en="Emergency">طوارئ</a></li><li><a href="services.html" data-ar="عناية مركزة" data-en="ICU">عناية مركزة</a></li><li><a href="services.html" data-ar="أسنان" data-en="Dental">أسنان</a></li><li><a href="services.html" data-ar="معامل" data-en="Labs">معامل</a></li></ul></div>
+        <div class="footer-contact"><h4 data-ar="تواصل معنا" data-en="Contact">تواصل معنا</h4><p><i class="fas fa-phone"></i><a href="tel:01503808877" dir="ltr">01503808877</a></p><p><i class="fab fa-whatsapp"></i><a href="https://wa.me/201503808877" target="_blank" dir="ltr">01503808877</a></p><p><i class="fas fa-map-marker-alt"></i><span data-ar="سوهاج الجديدة" data-en="New Sohag">سوهاج الجديدة</span></p></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Ritaj Specialized Hospital | <a href="https://pioneersxai.github.io/PioneersX-agency-Egy-Sa/" target="_blank">PioneersX ⚡</a></p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/201503808877" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+
+  <script>
+  let currentLang = 'ar';
+  function toggleLang() {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    const isAr = currentLang === 'ar';
+    document.getElementById('html-root').lang = currentLang;
+    document.getElementById('html-root').dir = isAr ? 'rtl' : 'ltr';
+    document.getElementById('langLabel').textContent = isAr ? 'EN' : 'عر';
+    document.querySelectorAll('[data-ar]').forEach(el => { el.textContent = isAr ? el.dataset.ar : el.dataset.en; });
+    document.querySelectorAll('[data-ar-placeholder]').forEach(el => { el.placeholder = isAr ? el.dataset.arPlaceholder : el.dataset.enPlaceholder; });
+    localStorage.setItem('ritaj-lang', currentLang);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    // Set min date to today
+    document.getElementById('apptDate').min = new Date().toISOString().split('T')[0];
+    const saved = localStorage.getItem('ritaj-lang');
+    if (saved && saved !== 'ar') toggleLang();
+  });
+
+  // Form submit
+  document.getElementById('appointmentForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+    const data = {
+      name:       document.getElementById('fullName').value,
+      phone:      document.getElementById('phone').value,
+      department: document.getElementById('department').value,
+      date:       document.getElementById('apptDate').value,
+      time:       document.getElementById('apptTime').value,
+      notes:      document.getElementById('notes').value,
+      hospital:   'Ritaj Specialized Hospital'
+    };
+
+    // Send to WhatsApp as fallback (backend integration ready)
+    const msg = `حجز موعد جديد - مستشفى ريتاج\nالاسم: ${data.name}\nالهاتف: ${data.phone}\nالقسم: ${data.department}\nالتاريخ: ${data.date}\nالوقت: ${data.time}\nملاحظات: ${data.notes}`;
+
+    document.getElementById('appointmentForm').style.display = 'none';
+    document.getElementById('apptSuccess').style.display = 'block';
+
+    // Also open WhatsApp with pre-filled message
+    setTimeout(() => {
+      window.open(`https://wa.me/201503808877?text=${encodeURIComponent(msg)}`, '_blank');
+    }, 1500);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('show', scrollY > 400);
+  });
+  document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('open'); });
+  document.getElementById('scrollTop').addEventListener('click', e => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+  </script>
+</body>
+</html>
