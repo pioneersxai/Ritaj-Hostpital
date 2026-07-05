@@ -1,1 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تواصل معنا | Ritaj Specialized Hospital</title>
+  <link rel="icon" type="image/png" href="assets/Logo.jpg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/Logo.jpg" alt="Ritaj" onerror="this.outerHTML='<span class=logo-text>e<span>Ritaj</span></span>'">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"       data-ar="الرئيسية"   data-en="Home">الرئيسية</a></li>
+        <li><a href="services.html"    data-ar="خدماتنا"    data-en="Services">خدماتنا</a></li>
+        <li><a href="doctors.html"     data-ar="أطباؤنا"    data-en="Doctors">أطباؤنا</a></li>
+        <li><a href="appointment.html" data-ar="احجز موعد"  data-en="Appointment">احجز موعد</a></li>
+        <li><a href="contact.html"     data-ar="تواصل معنا" data-en="Contact" class="active">تواصل معنا</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()"><i class="fas fa-globe"></i><span id="langLabel">EN</span></button>
+        <a href="appointment.html" class="nav-cta" data-ar="احجز موعد" data-en="Book Now">احجز موعد</a>
+        <a href="dashboard/index.html" class="nav-login" data-ar="دخول" data-en="Login">دخول</a>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h1>
+      <p data-ar="نحن هنا لخدمتك — تواصل معنا في أي وقت" data-en="We are here to serve you — contact us anytime">نحن هنا لخدمتك — تواصل معنا في أي وقت</p>
+      <div class="breadcrumb">
+        <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <i class="fas fa-chevron-left"></i>
+        <span data-ar="تواصل معنا" data-en="Contact">تواصل معنا</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- CONTACT CARDS -->
+      <div class="contact-cards">
+        <div class="contact-card fade-in">
+          <div class="cc-icon"><i class="fas fa-phone"></i></div>
+          <h3 data-ar="اتصل بنا" data-en="Call Us">اتصل بنا</h3>
+          <a href="tel:01503808877" dir="ltr">01503808877</a>
+          <a href="tel:01503405450" dir="ltr">01503405450</a>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="cc-icon green"><i class="fab fa-whatsapp"></i></div>
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/201503808877" target="_blank" dir="ltr">01503808877</a>
+          <span data-ar="رد فوري" data-en="Instant reply">رد فوري</span>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="cc-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3 data-ar="العنوان" data-en="Address">العنوان</h3>
+          <span data-ar="مدينة سوهاج الجديدة" data-en="New Sohag City">مدينة سوهاج الجديدة</span>
+          <span data-ar="محافظة سوهاج — مصر" data-en="Sohag Governorate — Egypt">محافظة سوهاج — مصر</span>
+        </div>
+        <div class="contact-card fade-in red">
+          <div class="cc-icon"><i class="fas fa-ambulance"></i></div>
+          <h3 data-ar="طوارئ 24/7" data-en="Emergency 24/7">طوارئ 24/7</h3>
+          <a href="tel:01503808877" dir="ltr">01503808877</a>
+          <span data-ar="متاح دائماً" data-en="Always available">متاح دائماً</span>
+        </div>
+      </div>
+
+      <!-- MAP + FORM -->
+      <div class="contact-layout">
+        <div class="contact-map-wrap fade-in">
+          <h3 data-ar="موقعنا على الخريطة" data-en="Our Location on the Map">موقعنا على الخريطة</h3>
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3475.8!2d31.7!3d26.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDMzJzAwLjAiTiAzMcKwNDInMDAuMCJF!5e0!3m2!1sar!2seg!4v1620000000000"
+              width="100%" height="360" style="border:0;border-radius:16px" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+          <div class="map-info">
+            <div class="mi-item"><i class="fas fa-map-marker-alt"></i><span data-ar="مدينة سوهاج الجديدة — محافظة سوهاج" data-en="New Sohag City — Sohag Governorate">مدينة سوهاج الجديدة — محافظة سوهاج</span></div>
+            <div class="mi-item"><i class="fas fa-clock"></i><span data-ar="عيادات خارجية: 9ص — 9م | طوارئ: 24 ساعة" data-en="Outpatient: 9AM — 9PM | Emergency: 24hrs">عيادات خارجية: 9ص — 9م | طوارئ: 24 ساعة</span></div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap fade-in">
+          <h3 data-ar="أرسل لنا رسالة" data-en="Send Us a Message">أرسل لنا رسالة</h3>
+          <form id="contactForm">
+            <div class="fg">
+              <label data-ar="الاسم *" data-en="Name *">الاسم *</label>
+              <input type="text" required placeholder="" data-ar-placeholder="اسمك الكامل" data-en-placeholder="Your full name">
+            </div>
+            <div class="fg">
+              <label data-ar="رقم الهاتف *" data-en="Phone *">رقم الهاتف *</label>
+              <input type="tel" required placeholder="" data-ar-placeholder="01xxxxxxxxx" data-en-placeholder="01xxxxxxxxx" dir="ltr">
+            </div>
+            <div class="fg">
+              <label data-ar="موضوع الرسالة" data-en="Subject">موضوع الرسالة</label>
+              <select>
+                <option data-ar="استفسار عام" data-en="General Inquiry">استفسار عام</option>
+                <option data-ar="حجز موعد" data-en="Book Appointment">حجز موعد</option>
+                <option data-ar="استفسار طبي" data-en="Medical Inquiry">استفسار طبي</option>
+                <option data-ar="شكوى أو اقتراح" data-en="Complaint or Suggestion">شكوى أو اقتراح</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label data-ar="رسالتك *" data-en="Message *">رسالتك *</label>
+              <textarea rows="5" required placeholder="" data-ar-placeholder="اكتب رسالتك هنا..." data-en-placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <i class="fas fa-paper-plane"></i>
+              <span data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- SOCIAL -->
+      <div class="social-section fade-in">
+        <h3 data-ar="تابعونا على السوشيال ميديا" data-en="Follow Us on Social Media">تابعونا على السوشيال ميديا</h3>
+        <div class="social-links-big">
+          <a href="https://www.facebook.com/RitajHospital" target="_blank" class="slb facebook">
+            <i class="fab fa-facebook"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/ritajhospital/" target="_blank" class="slb instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://wa.me/201503808877" target="_blank" class="slb whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/Logo.jpg" alt="Ritaj" style="height:60px;margin-bottom:16px" onerror="this.outerHTML='<div style=font-size:24px;font-weight:900;color:#fff>eRitaj</div>'">
+          <p data-ar="صرح طبي متكامل في مدينة سوهاج الجديدة" data-en="A comprehensive medical facility in New Sohag">صرح طبي متكامل في مدينة سوهاج الجديدة</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/RitajHospital" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ritajhospital/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/201503808877" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-links"><h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4><ul><li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li><li><a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li><li><a href="doctors.html" data-ar="أطباؤنا" data-en="Doctors">أطباؤنا</a></li><li><a href="appointment.html" data-ar="احجز موعد" data-en="Book">احجز موعد</a></li></ul></div>
+        <div class="footer-links"><h4 data-ar="أقسامنا" data-en="Departments">أقسامنا</h4><ul><li><a href="services.html" data-ar="طوارئ" data-en="Emergency">طوارئ</a></li><li><a href="services.html" data-ar="عناية مركزة" data-en="ICU">عناية مركزة</a></li><li><a href="services.html" data-ar="أسنان" data-en="Dental">أسنان</a></li><li><a href="services.html" data-ar="معامل" data-en="Labs">معامل</a></li></ul></div>
+        <div class="footer-contact"><h4 data-ar="تواصل معنا" data-en="Contact">تواصل معنا</h4><p><i class="fas fa-phone"></i><a href="tel:01503808877" dir="ltr">01503808877</a></p><p><i class="fab fa-whatsapp"></i><a href="https://wa.me/201503808877" target="_blank" dir="ltr">01503808877</a></p><p><i class="fas fa-map-marker-alt"></i><span data-ar="سوهاج الجديدة" data-en="New Sohag">سوهاج الجديدة</span></p></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Ritaj Specialized Hospital | <a href="https://pioneersxai.github.io/PioneersX-agency-Egy-Sa/" target="_blank">PioneersX ⚡</a></p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/201503808877" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+
+  <script>
+  let currentLang = 'ar';
+  function toggleLang() {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    const isAr = currentLang === 'ar';
+    document.getElementById('html-root').lang = currentLang;
+    document.getElementById('html-root').dir = isAr ? 'rtl' : 'ltr';
+    document.getElementById('langLabel').textContent = isAr ? 'EN' : 'عر';
+    document.querySelectorAll('[data-ar]').forEach(el => { el.textContent = isAr ? el.dataset.ar : el.dataset.en; });
+    document.querySelectorAll('[data-ar-placeholder]').forEach(el => { el.placeholder = isAr ? el.dataset.arPlaceholder : el.dataset.enPlaceholder; });
+    localStorage.setItem('ritaj-lang', currentLang);
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('ritaj-lang');
+    if (saved && saved !== 'ar') toggleLang();
+  });
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    alert(currentLang === 'ar' ? 'تم إرسال رسالتك! سنتواصل معك قريباً.' : 'Message sent! We will contact you soon.');
+    e.target.reset();
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('show', scrollY > 400);
+  });
+  document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('open'); });
+  document.getElementById('scrollTop').addEventListener('click', e => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
