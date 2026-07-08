@@ -1,138 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account - PioneersX</title>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='80' font-family='Arial Black,sans-serif' font-size='90' font-weight='900' text-anchor='middle' fill='%23ff1e1e'%3EX%3C/text%3E%3C/svg%3E">
-    
+    <title>إنشاء حساب | مستشفى ريتاج التخصصي</title>
+
+    <link rel="icon" type="image/png" href="../assets/Logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/dashboard.css">
+    <style>body{font-family:'Cairo',sans-serif;}</style>
 </head>
 <body>
     <div class="auth-page">
         <div class="auth-container">
             <div class="auth-card">
                 <div class="auth-header">
-                    <div class="auth-logo">Pioneers<span class="x">X</span></div>
-                    <p class="auth-tagline">AI-Powered Solutions Platform</p>
+                    <img src="../assets/Logo.jpg" alt="ريتاج" style="height:56px;object-fit:contain;margin-bottom:10px;border-radius:10px;">
+                    <div class="auth-logo" style="font-size:1.5rem;">مستشفى ريتاج <span class="x">التخصصي</span></div>
+                    <p class="auth-tagline">صحتك أمانتنا، ورعايتك مسؤوليتنا</p>
                 </div>
-                
+
                 <div class="auth-title">
-                    <h1>Create account</h1>
-                    <p>Start your AI journey today</p>
+                    <h1>إنشاء حساب جديد</h1>
+                    <p>سجّل الآن واحجز مواعيدك أونلاين</p>
                 </div>
-                
+
                 <div class="alert" id="alert"></div>
-                
+
                 <form id="registerForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">First Name</label>
-                            <input type="text" class="form-input" id="firstName" placeholder="John" required>
+                            <label class="form-label">الاسم الأول</label>
+                            <input type="text" class="form-input" id="firstName" placeholder="محمد" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Last Name</label>
-                            <input type="text" class="form-input" id="lastName" placeholder="Doe" required>
+                            <label class="form-label">اسم العائلة</label>
+                            <input type="text" class="form-input" id="lastName" placeholder="أحمد" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-input" id="email" placeholder="you@example.com" required>
+                        <label class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-input" id="email" placeholder="example@email.com" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-input" id="password" placeholder="Min. 8 characters" required minlength="8" autocomplete="new-password">
+                        <label class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-input" id="password" placeholder="8 أحرف على الأقل" required minlength="8" autocomplete="new-password">
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Confirm Password</label>
-                        <input type="password" class="form-input" id="confirmPassword" placeholder="Repeat password" required autocomplete="new-password">
+                        <label class="form-label">تأكيد كلمة المرور</label>
+                        <input type="password" class="form-input" id="confirmPassword" placeholder="أعد كتابة كلمة المرور" required autocomplete="new-password">
                     </div>
-                    
+
                     <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 10px;">
-                        <input type="checkbox" id="terms" required style="margin-top: 5px; accent-color: #ff1e1e;">
-                        <label for="terms" style="font-size: 13px; color: #a0a0a0; line-height: 1.4;">
-                            I agree to the <a href="../terms.html" style="color: #ff1e1e; text-decoration: none;">Terms of Service</a> and <a href="../privacy.html" style="color: #ff1e1e; text-decoration: none;">Privacy Policy</a>
+                        <input type="checkbox" id="terms" required style="margin-top: 5px; accent-color: var(--primary);">
+                        <label for="terms" style="font-size: 13px; color: var(--text-muted); line-height: 1.4;">
+                            أوافق على <a href="../terms.html" style="color: var(--primary); text-decoration: none;">الشروط والأحكام</a> و<a href="../privacy.html" style="color: var(--primary); text-decoration: none;">سياسة الخصوصية</a>
                         </label>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Create Account</button>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">إنشاء الحساب</button>
                 </form>
-                
+
                 <div class="auth-footer">
-                    Already have an account? <a href="index.html">Sign in</a>
+                    لديك حساب بالفعل؟ <a href="index.html">تسجيل الدخول</a>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="../config.js"></script>
     <script src="js/api.js"></script>
-    
+
     <script>
-        // Check if already logged in
         if (API.isLoggedIn()) {
             window.location.href = 'dashboard.html';
         }
-        
-        // Show/Hide Alert function
+
         function showAlert(message, type = 'error') {
             const alert = document.getElementById('alert');
             alert.className = `alert alert-${type} show`;
             alert.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
         }
-        
-        // Form Submission Logic
+
         document.getElementById('registerForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             const btn = document.getElementById('submitBtn');
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            // Basic Frontend Validation
-            if (password !== confirmPassword) { 
-                showAlert('Passwords do not match'); 
-                return; 
+
+            if (password !== confirmPassword) {
+                showAlert('كلمتا المرور غير متطابقتين');
+                return;
             }
-            if (password.length < 8) { 
-                showAlert('Password must be at least 8 characters'); 
-                return; 
+            if (password.length < 8) {
+                showAlert('يجب أن تكون كلمة المرور 8 أحرف على الأقل');
+                return;
             }
-            
-            // Set Loading State
+
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> Creating account...';
-            
+            btn.innerHTML = '<span class="spinner"></span> جارِ إنشاء الحساب...';
+
             try {
-                // Call API with all 5 required fields
                 const result = await API.register({
                     firstName: document.getElementById('firstName').value,
                     lastName: document.getElementById('lastName').value,
                     email: document.getElementById('email').value,
                     password: password,
-                    confirmPassword: confirmPassword // FIXED: Now sending to API
+                    confirmPassword: confirmPassword
                 });
-                
+
                 if (result.success) {
-                    showAlert('Account created! Redirecting...', 'success');
+                    showAlert('تم إنشاء الحساب بنجاح! جارِ التحويل...', 'success');
                     setTimeout(() => window.location.href = 'dashboard.html', 1000);
                 } else {
-                    // Show specific error from server
-                    showAlert(result.message || 'Registration failed');
+                    showAlert(result.message || 'فشل إنشاء الحساب');
                     btn.disabled = false;
-                    btn.innerHTML = 'Create Account';
+                    btn.innerHTML = 'إنشاء الحساب';
                 }
             } catch (err) {
                 console.error("Critical Register Error:", err);
-                showAlert("A connection error occurred. Check console (F12).");
+                showAlert("حدث خطأ في الاتصال. تحقق من الإنترنت.");
                 btn.disabled = false;
-                btn.innerHTML = 'Create Account';
+                btn.innerHTML = 'إنشاء الحساب';
             }
         });
     </script>
