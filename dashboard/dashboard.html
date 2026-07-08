@@ -1,480 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - PioneersX</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='80' font-family='Arial Black,sans-serif' font-size='90' font-weight='900' text-anchor='middle' fill='%23ff1e1e'%3EX%3C/text%3E%3C/svg%3E">
+    <title>تسجيل الدخول | مستشفى ريتاج التخصصي</title>
+
+    <link rel="icon" type="image/png" href="../assets/Logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/dashboard.css">
+    <style>body{font-family:'Cairo',sans-serif;}</style>
 </head>
 <body>
-    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
-    
-    <!-- Logout Modal -->
-    <div class="modal-overlay" id="logoutModal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <i class="fas fa-sign-out-alt"></i>
-            </div>
-            <h2 class="modal-title">Logout</h2>
-            <p class="modal-text">Are you sure you want to logout from your account?</p>
-            <div class="modal-actions">
-                <button class="btn btn-secondary btn-block" onclick="closeModal()">Cancel</button>
-                <button class="btn btn-primary btn-block" onclick="confirmLogout()">Logout</button>
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="../assets/Logo.jpg" alt="ريتاج" style="height:56px;object-fit:contain;margin-bottom:10px;border-radius:10px;">
+                    <div class="auth-logo" style="font-size:1.5rem;">مستشفى ريتاج <span class="x">التخصصي</span></div>
+                    <p class="auth-tagline">صحتك أمانتنا، ورعايتك مسؤوليتنا</p>
+                </div>
+
+                <div class="auth-title">
+                    <h1>أهلاً بعودتك</h1>
+                    <p>سجّل الدخول لمتابعة حجوزاتك وزياراتك</p>
+                </div>
+
+                <div class="alert" id="alert"></div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-input" id="email" placeholder="example@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">كلمة المرور</label>
+                        <div class="input-wrapper">
+                            <input type="password" class="form-input" id="password" placeholder="••••••••" required>
+                            <span class="input-icon" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="eyeIcon"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <a href="forgot-password.html" class="forgot-link">نسيت كلمة المرور؟</a>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">تسجيل الدخول</button>
+                </form>
+
+                <div class="auth-footer">
+                    ليس لديك حساب؟ <a href="register.html">إنشاء حساب جديد</a>
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- Alert Modal -->
-    <div class="modal-overlay" id="alertModal">
-        <div class="modal-content">
-            <div class="modal-icon" id="alertIcon">
-                <i class="fas fa-info-circle"></i>
-            </div>
-            <h2 class="modal-title" id="alertTitle">Alert</h2>
-            <p class="modal-text" id="alertMessage">Message here</p>
-            <div class="modal-actions">
-                <button class="btn btn-primary btn-block" onclick="closeAlertModal()">OK</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Notification Dropdown -->
-    <div class="notification-dropdown" id="notificationDropdown">
-        <div class="notification-header">Notifications</div>
-        <div class="notification-body">
-            <div class="notification-empty">
-                <i class="fas fa-bell-slash"></i>
-                <p>No new notifications</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="app">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-brand">
-                    <span class="brand-text">Pioneers<span class="x">X</span></span>
-                </div>
-                <button class="sidebar-close" onclick="closeSidebar()"><i class="fas fa-times"></i></button>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <div class="nav-group">
-                    <div class="nav-group-title">Menu</div>
-                    <a href="dashboard.html" class="nav-item active">
-                        <i class="fas fa-home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href="subscription.html" class="nav-item">
-                        <i class="fas fa-crown"></i>
-                        <span>Subscription</span>
-                        <span class="nav-badge">PRO</span>
-                    </a>
-                </div>
-                
-                <div class="nav-group">
-                    <div class="nav-group-title">Products</div>
-                    <a href="../assistx/index.html" class="nav-item" target="_blank">
-                        <i class="fas fa-robot"></i>
-                        <span>AssistX</span>
-                    </a>
-                    <a href="../analyticsx/index.html" class="nav-item" target="_blank">
-                        <i class="fas fa-chart-line"></i>
-                        <span>AnalyticsX</span>
-                    </a>
-                </div>
-                
-                <div class="nav-group">
-                    <div class="nav-group-title">Account</div>
-                    <a href="profile.html" class="nav-item">
-                        <i class="fas fa-user"></i>
-                        <span>Profile</span>
-                    </a>
-                    <a href="settings.html" class="nav-item">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
-                    </a>
-                    <a href="../index.html" class="nav-item" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Main Website</span>
-                    </a>
-                </div>
-            </nav>
-            
-            <div class="sidebar-footer">
-                <div class="user-menu" onclick="showLogoutModal()">
-                    <div class="user-avatar" id="userAvatar">U</div>
-                    <div class="user-details">
-                        <div class="user-name" id="userName">User</div>
-                        <div class="user-email" id="userEmail">user@email.com</div>
-                    </div>
-                    <i class="fas fa-sign-out-alt user-menu-icon"></i>
-                </div>
-            </div>
-        </aside>
-        
-        <!-- Main Content -->
-        <main class="main">
-            <!-- Header -->
-            <header class="header">
-                <div class="header-left">
-                    <button class="menu-toggle" onclick="openSidebar()">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <h1 class="page-title">Dashboard</h1>
-                </div>
-                <div class="header-right">
-                    <button class="header-btn" onclick="toggleNotifications()" title="Notifications">
-                        <i class="fas fa-bell"></i>
-                    </button>
-                    <a id="support-email-link" href="mailto:support@pioneersx.store" class="header-btn" title="Help & Support">
-                        <i class="fas fa-question-circle"></i>
-                    </a>
-                </div>
-            </header>
-            
-            <!-- Content -->
-            <div class="content">
-                <!-- Welcome Section -->
-                <div class="welcome">
-                    <h1 class="welcome-title">Welcome back, <span id="welcomeName">User</span>! 👋</h1>
-                    <p class="welcome-subtitle">Here's what's happening with your account today.</p>
-                </div>
-                
-                <!-- Stats Grid -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value" id="activeSubscriptions">0</div>
-                        <div class="stat-label">Active Subscriptions</div>
-                    </div>
-                    
-                    <div class="stat-card" id="emailStatCard">
-                        <div class="stat-header">
-                            <div class="stat-icon green">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value" id="emailStatus" style="font-size: 1.2rem;">Not Verified</div>
-                        <div class="stat-label">Email Status</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div class="stat-icon blue">
-                                <i class="fas fa-box"></i>
-                            </div>
-                        </div>
-                        <div class="stat-value">2</div>
-                        <div class="stat-label">Available Products</div>
-                    </div>
-                </div>
-                
-                <!-- Quick Actions Card -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title"><i class="fas fa-bolt"></i> Quick Actions</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="actions-grid">
-                            <a href="subscription.html" class="action-card">
-                                <div class="action-icon"><i class="fas fa-crown"></i></div>
-                                <div class="action-title">Upgrade Plan</div>
-                                <div class="action-desc">Get more features</div>
-                            </a>
-                            <a href="profile.html" class="action-card">
-                                <div class="action-icon"><i class="fas fa-user-edit"></i></div>
-                                <div class="action-title">Edit Profile</div>
-                                <div class="action-desc">Update your info</div>
-                            </a>
-                            <a href="../assistx/index.html" target="_blank" class="action-card">
-                                <div class="action-icon"><i class="fas fa-robot"></i></div>
-                                <div class="action-title">Open AssistX</div>
-                                <div class="action-desc">AI Assistant</div>
-                            </a>
-                            <a href="../analyticsx/index.html" target="_blank" class="action-card">
-                                <div class="action-icon"><i class="fas fa-chart-line"></i></div>
-                                <div class="action-title">Open AnalyticsX</div>
-                                <div class="action-desc">Business Analytics</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Products Card -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title"><i class="fas fa-box-open"></i> Our Products</h2>
-                        <a href="subscription.html" class="btn btn-ghost btn-sm">
-                            View Plans <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="products-grid">
-                            <!-- AssistX Product -->
-                            <div class="product-card">
-                                <div class="product-header">
-                                    <div class="product-icon"><i class="fas fa-robot"></i></div>
-                                    <span class="product-badge">Popular</span>
-                                </div>
-                                <h3 class="product-name">Assist<span class="x">X</span></h3>
-                                <p class="product-desc">Access 15+ AI models including ChatGPT, Claude, Perplexity and more - all in one place.</p>
-                                <div class="product-features">
-                                    <span class="product-feature">ChatGPT</span>
-                                    <span class="product-feature">Claude</span>
-                                    <span class="product-feature">Perplexity</span>
-                                    <span class="product-feature">+12 more</span>
-                                </div>
-                                <div class="product-footer">
-                                    <div class="product-price">
-                                        <span class="price-small">$</span><span class="price-big">25</span><span class="price-small">/mo</span>
-                                    </div>
-                                    <a href="subscription.html" class="btn btn-primary btn-sm">Subscribe</a>
-                                </div>
-                            </div>
-                            
-                            <!-- AnalyticsX Product -->
-                            <div class="product-card">
-                                <div class="product-header">
-                                    <div class="product-icon"><i class="fas fa-chart-line"></i></div>
-                                    <span class="product-badge">New</span>
-                                </div>
-                                <h3 class="product-name">Analytics<span class="x">X</span></h3>
-                                <p class="product-desc">Smart business analytics powered by AI. Get insights, automated reports, and predictions.</p>
-                                <div class="product-features">
-                                    <span class="product-feature">Dashboards</span>
-                                    <span class="product-feature">Reports</span>
-                                    <span class="product-feature">AI Insights</span>
-                                    <span class="product-feature">Predictions</span>
-                                </div>
-                                <div class="product-footer">
-                                    <div class="product-price">
-                                        <span class="price-small">$</span><span class="price-big">149</span><span class="price-small">/mo</span>
-                                    </div>
-                                    <a href="subscription.html" class="btn btn-primary btn-sm">Subscribe</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Subscriptions Card -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title"><i class="fas fa-receipt"></i> Your Subscriptions</h2>
-                    </div>
-                    <div class="card-body" id="subscriptionsList">
-                        <div class="empty-state">
-                            <div class="empty-state-icon"><i class="fas fa-inbox"></i></div>
-                            <h3 class="empty-state-title">No active subscriptions</h3>
-                            <p class="empty-state-desc">Subscribe to a plan to unlock premium features</p>
-                            <a href="subscription.html" class="btn btn-primary">Subscribe Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-    
-    <!-- Scripts -->
+
     <script src="../config.js"></script>
     <script src="js/api.js"></script>
     <script>
-        // Wire support email from config
-        if (typeof BRAND !== 'undefined') {
-            document.getElementById('support-email-link').href = 'mailto:' + BRAND.email;
+        if (API.isLoggedIn()) {
+            window.location.href = 'dashboard.html';
         }
 
-        // Auth check
-        if (!API.isLoggedIn()) {
-            window.location.href = 'index.html';
-        }
-        
-        // AUTO LOGOUT ON TOKEN EXPIRY
-        function handleTokenExpiry() {
-            localStorage.clear();
-            window.location.href = 'index.html';
-        }
-        
-        // MODAL POPUP SYSTEM (replaces alert)
-        function showAlertModal(title, message, type = 'info') {
-            const modal = document.getElementById('alertModal');
-            const icon = document.getElementById('alertIcon');
-            const titleEl = document.getElementById('alertTitle');
-            const messageEl = document.getElementById('alertMessage');
-            const iconElement = icon.querySelector('i');
-            
-            titleEl.textContent = title;
-            messageEl.textContent = message;
-            
-            if (type === 'success') {
-                iconElement.className = 'fas fa-check-circle';
-                icon.style.background = 'rgba(34, 197, 94, 0.1)';
-                icon.style.color = 'var(--success)';
-            } else if (type === 'error') {
-                iconElement.className = 'fas fa-exclamation-circle';
-                icon.style.background = 'rgba(239, 68, 68, 0.1)';
-                icon.style.color = 'var(--error)';
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('eyeIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
             } else {
-                iconElement.className = 'fas fa-info-circle';
-                icon.style.background = 'rgba(59, 130, 246, 0.1)';
-                icon.style.color = 'var(--info)';
-            }
-            
-            modal.classList.add('show');
-        }
-        
-        function closeAlertModal() {
-            document.getElementById('alertModal').classList.remove('show');
-        }
-        
-        // Load user data
-        async function loadUserData() {
-            const userStr = localStorage.getItem('user');
-            if (!userStr) return;
-            
-            const user = JSON.parse(userStr);
-            const firstName = user.firstName || 'User';
-            const lastName = user.lastName || '';
-            const capitalizedFirst = firstName.charAt(0).toUpperCase() + firstName.slice(1);
-            const capitalizedLast = lastName ? lastName.charAt(0).toUpperCase() + lastName.slice(1) : '';
-            const fullName = `${capitalizedFirst} ${capitalizedLast}`.trim();
-            
-            document.getElementById('welcomeName').textContent = capitalizedFirst;
-            document.getElementById('userName').textContent = fullName;
-            document.getElementById('userEmail').textContent = user.email || '';
-            document.getElementById('userAvatar').textContent = capitalizedFirst.charAt(0);
-            
-            const emailStatCard = document.getElementById('emailStatCard');
-            if (user.isEmailVerified) {
-                emailStatCard.style.display = 'none';
-            } else {
-                emailStatCard.style.display = 'block';
-                const emailStatus = document.getElementById('emailStatus');
-                emailStatus.textContent = 'Not Verified';
-                emailStatus.style.color = 'var(--warning)';
-                emailStatus.style.cursor = 'pointer';
-                emailStatus.onclick = sendVerificationEmail;
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         }
-        
-        // Send verification email function
-        async function sendVerificationEmail() {
-            const emailStatus = document.getElementById('emailStatus');
-            const originalText = emailStatus.textContent;
-            
-            emailStatus.textContent = 'Sending...';
-            emailStatus.style.cursor = 'wait';
-            
+
+        function showAlert(message, type = 'error') {
+            const alert = document.getElementById('alert');
+            alert.className = `alert alert-${type} show`;
+            alert.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+
+            const cleanEmail = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> جارِ تسجيل الدخول...';
+
             try {
-                const apiBase = (typeof BRAND !== 'undefined') ? BRAND.apiBase : 'https://api.pioneersx.store/api';
-                const response = await fetch(`${apiBase}/auth/send-verification`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    }
-                });
-                
-                if (response.status === 401) {
-                    showAlertModal('Session Expired', 'Your session has expired. Please login again.', 'error');
-                    setTimeout(handleTokenExpiry, 2000);
-                    return;
-                }
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    showAlertModal('Success', 'Verification email sent! Check your inbox and click the verification link.', 'success');
-                    emailStatus.textContent = 'Email Sent ✓';
-                    emailStatus.style.color = 'var(--info)';
+                const result = await API.login(cleanEmail, password);
+
+                if (result.success) {
+                    showAlert('تم تسجيل الدخول بنجاح! جارِ التحويل...', 'success');
+                    setTimeout(() => window.location.href = 'dashboard.html', 800);
                 } else {
-                    showAlertModal('Failed', result.message || 'Please try again later.', 'error');
-                    emailStatus.textContent = originalText;
-                    emailStatus.style.cursor = 'pointer';
+                    showAlert(result.message || 'البريد الإلكتروني أو كلمة المرور غير صحيحة');
+                    btn.disabled = false;
+                    btn.innerHTML = 'تسجيل الدخول';
                 }
-            } catch (error) {
-                console.error('Verification email error:', error);
-                showAlertModal('Network Error', 'Please check your connection and try again.', 'error');
-                emailStatus.textContent = originalText;
-                emailStatus.style.cursor = 'pointer';
+            } catch (err) {
+                console.error("Critical Login Error:", err);
+                showAlert("فشل الاتصال. برجاء التحقق من الإنترنت.");
+                btn.disabled = false;
+                btn.innerHTML = 'تسجيل الدخول';
             }
-        }
-        
-        async function loadSubscriptions() {
-            try {
-                const result = await API.getMySubscriptions();
-                
-                if (result && result.status === 401) {
-                    handleTokenExpiry();
-                    return;
-                }
-                
-                if (result.success && result.data && result.data.length > 0) {
-                    document.getElementById('activeSubscriptions').textContent = result.data.filter(s => s.status === 'active').length;
-                }
-            } catch (error) {
-                console.error('Failed to load subscriptions:', error);
-            }
-        }
-        
-        function openSidebar() {
-            document.getElementById('sidebar').classList.add('open');
-            document.getElementById('overlay').classList.add('show');
-        }
-        
-        function closeSidebar() {
-            document.getElementById('sidebar').classList.remove('open');
-            document.getElementById('overlay').classList.remove('show');
-        }
-        
-        function showLogoutModal() {
-            document.getElementById('logoutModal').classList.add('show');
-        }
-        
-        function closeModal() {
-            document.getElementById('logoutModal').classList.remove('show');
-        }
-        
-        async function confirmLogout() {
-            try {
-                await API.logout();
-            } catch (error) {
-                console.error('Logout error:', error);
-            }
-            localStorage.clear();
-            window.location.href = 'index.html';
-        }
-        
-        function toggleNotifications() {
-            const dropdown = document.getElementById('notificationDropdown');
-            dropdown.classList.toggle('show');
-            
-            if (dropdown.classList.contains('show')) {
-                setTimeout(() => {
-                    document.addEventListener('click', closeNotificationsOutside);
-                }, 100);
-            }
-        }
-        
-        function closeNotificationsOutside(e) {
-            const dropdown = document.getElementById('notificationDropdown');
-            if (!dropdown.contains(e.target) && !e.target.closest('.header-btn')) {
-                dropdown.classList.remove('show');
-                document.removeEventListener('click', closeNotificationsOutside);
-            }
-        }
-        
-        // Load data
-        loadUserData();
-        loadSubscriptions();
+        });
     </script>
 </body>
 </html>
