@@ -31,7 +31,11 @@
 
 html { scroll-behavior:smooth; }
 body { font-family:var(--font-ar); color:var(--text-dark); background:#fff; overflow-x:hidden; }
-[lang="en"] body, [lang="en"] * { font-family:var(--font-en); }
+/* FIX: exclude icon classes so FontAwesome glyphs keep their own icon font
+   in English mode instead of being clobbered by the universal * selector
+   below (this was causing every icon on the site to render as an empty
+   box/tofu character whenever the language toggle was set to English). */
+[lang="en"] body, [lang="en"] *:not(.fa):not(.fas):not(.far):not(.fab):not(.fal) { font-family:var(--font-en); }
 
 /* ── NAVBAR ── */
 nav {
@@ -46,11 +50,22 @@ nav.scrolled { box-shadow:var(--shadow-md); }
   max-width:var(--max-w); margin:0 auto; padding:0 24px;
   display:flex; align-items:center; justify-content:space-between;
   height:72px; gap:24px;
+  /* FIX: pin the nav bar's own layout to a fixed left-to-right order so the
+     logo always sits on the left and the action buttons always sit on the
+     right, in BOTH Arabic and English modes. Without this, the whole bar
+     inherited the page's rtl/ltr direction and flipped every time the
+     language was toggled. */
+  direction:ltr;
 }
 .nav-logo img { height:48px; object-fit:contain; }
 .logo-text { font-size:22px; font-weight:900; color:var(--green); }
 .logo-text span { color:var(--red); }
 .nav-links { display:flex; gap:4px; list-style:none; margin:0; padding:0; }
+/* FIX: .nav-inner above is now hard-pinned to direction:ltr so the logo/
+   actions stay put regardless of language. That would also flip the
+   reading order of the nav links themselves, so restore their proper
+   right-to-left order specifically when the page is in Arabic. */
+[dir="rtl"] .nav-links { direction: rtl; }
 .nav-links a {
   color:var(--text-muted); text-decoration:none;
   font-size:14px; font-weight:500; padding:8px 14px;
