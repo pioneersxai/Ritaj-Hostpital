@@ -1,230 +1,231 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" id="html-root">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أطباؤنا | Ritaj Specialized Hospital</title>
-  <link rel="icon" type="image/png" href="assets/Logo.jpg">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<html lang="ar" dir="rtl" id="html-root"><head><style>body {transition: opacity ease-in 0.2s; }
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; }
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أطباؤنا | Ritaj Specialized Hospital</title>
+<link rel="icon" type="image/png" href="assets/Logo.jpg">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/Logo.jpg" alt="Ritaj" onerror="this.outerHTML='<span class=logo-text>e<span>Ritaj</span></span>'">
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html"       data-ar="الرئيسية"   data-en="Home">الرئيسية</a></li>
-        <li><a href="services.html"    data-ar="خدماتنا"    data-en="Services">خدماتنا</a></li>
-        <li><a href="doctors.html"     data-ar="أطباؤنا"    data-en="Doctors" class="active">أطباؤنا</a></li>
-        <li><a href="appointment.html" data-ar="احجز موعد"  data-en="Appointment">احجز موعد</a></li>
-        <li><a href="contact.html"     data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="lang-toggle" id="langToggle" onclick="toggleLang()"><i class="fas fa-globe"></i><span id="langLabel">EN</span></button>
-        <a href="appointment.html" class="nav-cta" data-ar="احجز موعد" data-en="Book Now">احجز موعد</a>
-        <a href="dashboard/index.html" class="nav-login" data-ar="دخول" data-en="Login">دخول</a>
-        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-      </div>
-    </div>
-  </nav>
+<nav id="navbar">
+<div class="nav-inner">
+<a href="index.html" class="nav-logo">
+<img src="assets/Logo.jpg" alt="Ritaj" onerror="this.outerHTML='<span class=logo-text>e<span>Ritaj</span></span>'">
+</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+<li><a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+<li><a href="doctors.html" data-ar="أطباؤنا" data-en="Doctors" class="active">أطباؤنا</a></li>
+<li><a href="appointment.html" data-ar="احجز موعد" data-en="Appointment">احجز موعد</a></li>
+<li><a href="contact.html" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+</ul>
+<div class="nav-actions">
+<button class="lang-toggle" id="langToggle" onclick="toggleLang()"><i class="fas fa-globe"></i><span id="langLabel">EN</span></button>
+<a href="appointment.html" class="nav-cta" data-ar="احجز موعد" data-en="Book Now">احجز موعد</a>
+<a href="dashboard/index.html" class="nav-login" data-ar="دخول" data-en="Login">دخول</a>
+<button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+</div>
+</div>
+</nav>
 
-  <section class="page-header">
-    <div class="container">
-      <h1 data-ar="فريقنا الطبي" data-en="Our Medical Team">فريقنا الطبي</h1>
-      <p data-ar="نخبة من أفضل الأطباء المتخصصين في مختلف التخصصات الطبية" data-en="Elite of the best specialist doctors in various medical specialties">نخبة من أفضل الأطباء المتخصصين في مختلف التخصصات الطبية</p>
-      <div class="breadcrumb">
-        <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-        <i class="fas fa-chevron-left"></i>
-        <span data-ar="أطباؤنا" data-en="Doctors">أطباؤنا</span>
-      </div>
-    </div>
-  </section>
+<section class="page-header">
+<div class="container">
+<h1 data-ar="فريقنا الطبي" data-en="Our Medical Team">فريقنا الطبي</h1>
+<p data-ar="نخبة من أفضل الأطباء المتخصصين في مختلف التخصصات الطبية" data-en="Elite of the best specialist doctors in various medical specialties">نخبة من أفضل الأطباء المتخصصين في مختلف التخصصات الطبية</p>
+<div class="breadcrumb">
+<a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+<i class="fas fa-chevron-left"></i>
+<span data-ar="أطباؤنا" data-en="Doctors">أطباؤنا</span>
+</div>
+</div>
+</section>
 
-  <!-- FILTER -->
-  <section class="section" style="padding-bottom:0">
-    <div class="container">
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all" data-ar="الكل" data-en="All">الكل</button>
-        <button class="filter-btn" data-filter="internal" data-ar="باطنة" data-en="Internal">باطنة</button>
-        <button class="filter-btn" data-filter="surgery" data-ar="جراحة" data-en="Surgery">جراحة</button>
-        <button class="filter-btn" data-filter="obstetrics" data-ar="نساء وولادة" data-en="Obstetrics">نساء وولادة</button>
-        <button class="filter-btn" data-filter="dental" data-ar="أسنان" data-en="Dental">أسنان</button>
-        <button class="filter-btn" data-filter="eyes" data-ar="عيون" data-en="Eyes">عيون</button>
-        <button class="filter-btn" data-filter="cosmetics" data-ar="تجميل" data-en="Cosmetics">تجميل</button>
-      </div>
-    </div>
-  </section>
+<!-- FILTER -->
+<section class="section" style="padding-bottom:0">
+<div class="container">
+<div class="filter-bar">
+<button class="filter-btn active" data-filter="all" data-ar="الكل" data-en="All">الكل</button>
+<button class="filter-btn" data-filter="internal" data-ar="باطنة" data-en="Internal">باطنة</button>
+<button class="filter-btn" data-filter="surgery" data-ar="جراحة" data-en="Surgery">جراحة</button>
+<button class="filter-btn" data-filter="obstetrics" data-ar="نساء وولادة" data-en="Obstetrics">نساء وولادة</button>
+<button class="filter-btn" data-filter="dental" data-ar="أسنان" data-en="Dental">أسنان</button>
+<button class="filter-btn" data-filter="eyes" data-ar="عيون" data-en="Eyes">عيون</button>
+<button class="filter-btn" data-filter="cosmetics" data-ar="تجميل" data-en="Cosmetics">تجميل</button>
+</div>
+</div>
+</section>
 
-  <section class="section">
-    <div class="container">
-      <div class="doctors-full-grid">
+<section class="section">
+<div class="container">
+<div class="doctors-full-grid">
 
-        <div class="doctor-full-card fade-in" data-category="internal">
-          <div class="dfc-img"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="Doctor" loading="lazy"></div>
-          <div class="dfc-body">
-            <div class="dfc-tag" data-ar="أمراض الباطنة" data-en="Internal Medicine">أمراض الباطنة</div>
-            <h3>أ.د. محمد خلف الله</h3>
-            <p class="dfc-title" data-ar="مشرف عام — مؤسس المستشفى" data-en="General Supervisor — Hospital Founder">مشرف عام — مؤسس المستشفى</p>
-            <div class="dfc-info">
-              <span><i class="fas fa-graduation-cap"></i> <span data-ar="أستاذ دكتور" data-en="Professor Doctor">أستاذ دكتور</span></span>
-              <span><i class="fas fa-clock"></i> <span data-ar="يومياً" data-en="Daily">يومياً</span></span>
-            </div>
-            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
-          </div>
-        </div>
+<div class="doctor-full-card fade-in" data-category="internal">
+<div class="dfc-img"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&amp;q=80" alt="Doctor" loading="lazy"></div>
+<div class="dfc-body">
+<div class="dfc-tag" data-ar="أمراض الباطنة" data-en="Internal Medicine">أمراض الباطنة</div>
+<h3 data-ar="أ.د. محمد خلف الله" data-en="Prof. Dr. Mohamed Khalaf Allah">أ.د. محمد خلف الله</h3>
+<p class="dfc-title" data-ar="مشرف عام — مؤسس المستشفى" data-en="General Supervisor — Hospital Founder">مشرف عام — مؤسس المستشفى</p>
+<div class="dfc-info">
+<span><i class="fas fa-graduation-cap"></i> <span data-ar="أستاذ دكتور" data-en="Professor Doctor">أستاذ دكتور</span></span>
+<span><i class="fas fa-clock"></i> <span data-ar="يومياً" data-en="Daily">يومياً</span></span>
+</div>
+<a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
+</div>
+</div>
 
-        <div class="doctor-full-card fade-in" data-category="obstetrics">
-          <div class="dfc-img"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" alt="Doctor" loading="lazy"></div>
-          <div class="dfc-body">
-            <div class="dfc-tag" data-ar="النساء والولادة" data-en="Obstetrics">النساء والولادة</div>
-            <h3>د. أسماء علي قاسم</h3>
-            <p class="dfc-title" data-ar="أخصائية أمراض الباطنة والولادة" data-en="Specialist in Internal Medicine & Obstetrics">أخصائية أمراض الباطنة والولادة</p>
-            <div class="dfc-info">
-              <span><i class="fas fa-graduation-cap"></i> <span data-ar="دكتوراه" data-en="PhD">دكتوراه</span></span>
-              <span><i class="fas fa-clock"></i> <span data-ar="السبت — الخميس" data-en="Sat — Thu">السبت — الخميس</span></span>
-            </div>
-            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتورة" data-en="Book Appointment">احجز مع الدكتورة</a>
-          </div>
-        </div>
+<div class="doctor-full-card fade-in" data-category="obstetrics">
+<div class="dfc-img"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&amp;q=80" alt="Doctor" loading="lazy"></div>
+<div class="dfc-body">
+<div class="dfc-tag" data-ar="النساء والولادة" data-en="Obstetrics">النساء والولادة</div>
+<h3 data-ar="د. أسماء علي قاسم" data-en="Dr. Asmaa Ali Kassem">د. أسماء علي قاسم</h3>
+<p class="dfc-title" data-ar="أخصائية أمراض الباطنة والولادة" data-en="Specialist in Internal Medicine &amp; Obstetrics">أخصائية أمراض الباطنة والولادة</p>
+<div class="dfc-info">
+<span><i class="fas fa-graduation-cap"></i> <span data-ar="دكتوراه" data-en="PhD">دكتوراه</span></span>
+<span><i class="fas fa-clock"></i> <span data-ar="السبت — الخميس" data-en="Sat — Thu">السبت — الخميس</span></span>
+</div>
+<a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتورة" data-en="Book Appointment">احجز مع الدكتورة</a>
+</div>
+</div>
 
-        <div class="doctor-full-card fade-in" data-category="internal">
-          <div class="dfc-img"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" alt="Doctor" loading="lazy"></div>
-          <div class="dfc-body">
-            <div class="dfc-tag" data-ar="أمراض الغدد والسكر" data-en="Endocrinology">أمراض الغدد والسكر</div>
-            <h3>د. أحمد النجار</h3>
-            <p class="dfc-title" data-ar="أخصائي أمراض الغدد الصماء والسكري" data-en="Specialist in Endocrinology & Diabetes">أخصائي أمراض الغدد الصماء والسكري</p>
-            <div class="dfc-info">
-              <span><i class="fas fa-graduation-cap"></i> <span data-ar="ماجستير" data-en="Masters">ماجستير</span></span>
-              <span><i class="fas fa-clock"></i> <span data-ar="الأحد — الأربعاء" data-en="Sun — Wed">الأحد — الأربعاء</span></span>
-            </div>
-            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
-          </div>
-        </div>
+<div class="doctor-full-card fade-in" data-category="internal">
+<div class="dfc-img"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&amp;q=80" alt="Doctor" loading="lazy"></div>
+<div class="dfc-body">
+<div class="dfc-tag" data-ar="أمراض الغدد والسكر" data-en="Endocrinology">أمراض الغدد والسكر</div>
+<h3 data-ar="د. أحمد النجار" data-en="Dr. Ahmed El-Naggar">د. أحمد النجار</h3>
+<p class="dfc-title" data-ar="أخصائي أمراض الغدد الصماء والسكري" data-en="Specialist in Endocrinology &amp; Diabetes">أخصائي أمراض الغدد الصماء والسكري</p>
+<div class="dfc-info">
+<span><i class="fas fa-graduation-cap"></i> <span data-ar="ماجستير" data-en="Masters">ماجستير</span></span>
+<span><i class="fas fa-clock"></i> <span data-ar="الأحد — الأربعاء" data-en="Sun — Wed">الأحد — الأربعاء</span></span>
+</div>
+<a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
+</div>
+</div>
 
-        <div class="doctor-full-card fade-in" data-category="eyes">
-          <div class="dfc-img"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Doctor" loading="lazy"></div>
-          <div class="dfc-body">
-            <div class="dfc-tag" data-ar="طب وجراحة العيون" data-en="Ophthalmology">طب وجراحة العيون</div>
-            <h3>د. حسن عامر</h3>
-            <p class="dfc-title" data-ar="أخصائي طب وجراحة العيون" data-en="Specialist in Ophthalmology & Eye Surgery">أخصائي طب وجراحة العيون</p>
-            <div class="dfc-info">
-              <span><i class="fas fa-graduation-cap"></i> <span data-ar="دكتوراه" data-en="PhD">دكتوراه</span></span>
-              <span><i class="fas fa-clock"></i> <span data-ar="الاثنين — الجمعة" data-en="Mon — Fri">الاثنين — الجمعة</span></span>
-            </div>
-            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
-          </div>
-        </div>
+<div class="doctor-full-card fade-in" data-category="eyes">
+<div class="dfc-img"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&amp;q=80" alt="Doctor" loading="lazy"></div>
+<div class="dfc-body">
+<div class="dfc-tag" data-ar="طب وجراحة العيون" data-en="Ophthalmology">طب وجراحة العيون</div>
+<h3 data-ar="د. حسن عامر" data-en="Dr. Hassan Amer">د. حسن عامر</h3>
+<p class="dfc-title" data-ar="أخصائي طب وجراحة العيون" data-en="Specialist in Ophthalmology &amp; Eye Surgery">أخصائي طب وجراحة العيون</p>
+<div class="dfc-info">
+<span><i class="fas fa-graduation-cap"></i> <span data-ar="دكتوراه" data-en="PhD">دكتوراه</span></span>
+<span><i class="fas fa-clock"></i> <span data-ar="الاثنين — الجمعة" data-en="Mon — Fri">الاثنين — الجمعة</span></span>
+</div>
+<a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
+</div>
+</div>
 
-        <div class="doctor-full-card fade-in" data-category="dental">
-          <div class="dfc-img"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80" alt="Doctor" loading="lazy"></div>
-          <div class="dfc-body">
-            <div class="dfc-tag" data-ar="أسنان" data-en="Dental">أسنان</div>
-            <h3>د. محمد عصام النمر</h3>
-            <p class="dfc-title" data-ar="أخصائي طب وجراحة الفم والأسنان" data-en="Specialist in Oral & Dental Surgery">أخصائي طب وجراحة الفم والأسنان</p>
-            <div class="dfc-info">
-              <span><i class="fas fa-graduation-cap"></i> <span data-ar="بكالوريوس طب أسنان" data-en="BDS">بكالوريوس طب أسنان</span></span>
-              <span><i class="fas fa-clock"></i> <span data-ar="يومياً" data-en="Daily">يومياً</span></span>
-            </div>
-            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
-          </div>
-        </div>
+<div class="doctor-full-card fade-in" data-category="dental">
+<div class="dfc-img"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&amp;q=80" alt="Doctor" loading="lazy"></div>
+<div class="dfc-body">
+<div class="dfc-tag" data-ar="أسنان" data-en="Dental">أسنان</div>
+<h3 data-ar="د. محمد عصام النمر" data-en="Dr. Mohamed Essam El-Nemr">د. محمد عصام النمر</h3>
+<p class="dfc-title" data-ar="أخصائي طب وجراحة الفم والأسنان" data-en="Specialist in Oral &amp; Dental Surgery">أخصائي طب وجراحة الفم والأسنان</p>
+<div class="dfc-info">
+<span><i class="fas fa-graduation-cap"></i> <span data-ar="بكالوريوس طب أسنان" data-en="BDS">بكالوريوس طب أسنان</span></span>
+<span><i class="fas fa-clock"></i> <span data-ar="يومياً" data-en="Daily">يومياً</span></span>
+</div>
+<a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
+</div>
+</div>
 
-        <div class="doctor-full-card fade-in" data-category="cosmetics">
-          <div class="dfc-img"><img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&q=80" alt="Doctor" loading="lazy"></div>
-          <div class="dfc-body">
-            <div class="dfc-tag" data-ar="تجميل وجلدية" data-en="Cosmetics">تجميل وجلدية</div>
-            <h3>د. نعمان عاشور</h3>
-            <p class="dfc-title" data-ar="أخصائي التجميل والجلدية والتضخير" data-en="Specialist in Cosmetics, Dermatology & Fillers">أخصائي التجميل والجلدية والتضخير</p>
-            <div class="dfc-info">
-              <span><i class="fas fa-graduation-cap"></i> <span data-ar="دكتوراه تجميل" data-en="Cosmetics PhD">دكتوراه تجميل</span></span>
-              <span><i class="fas fa-clock"></i> <span data-ar="الثلاثاء — السبت" data-en="Tue — Sat">الثلاثاء — السبت</span></span>
-            </div>
-            <a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
-          </div>
-        </div>
+<div class="doctor-full-card fade-in" data-category="cosmetics">
+<div class="dfc-img"><img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&amp;q=80" alt="Doctor" loading="lazy"></div>
+<div class="dfc-body">
+<div class="dfc-tag" data-ar="تجميل وجلدية" data-en="Cosmetics">تجميل وجلدية</div>
+<h3 data-ar="د. نعمان عاشور" data-en="Dr. Noaman Ashour">د. نعمان عاشور</h3>
+<p class="dfc-title" data-ar="أخصائي التجميل والجلدية والتضخير" data-en="Specialist in Cosmetics, Dermatology &amp; Fillers">أخصائي التجميل والجلدية والتضخير</p>
+<div class="dfc-info">
+<span><i class="fas fa-graduation-cap"></i> <span data-ar="دكتوراه تجميل" data-en="Cosmetics PhD">دكتوراه تجميل</span></span>
+<span><i class="fas fa-clock"></i> <span data-ar="الثلاثاء — السبت" data-en="Tue — Sat">الثلاثاء — السبت</span></span>
+</div>
+<a href="appointment.html" class="btn btn-primary btn-sm" data-ar="احجز مع الدكتور" data-en="Book Appointment">احجز مع الدكتور</a>
+</div>
+</div>
 
-      </div>
-    </div>
-  </section>
+</div>
+</div>
+</section>
 
-  <section class="book-cta">
-    <div class="container">
-      <div class="book-cta-inner">
-        <div>
-          <h2 data-ar="لم تجد طبيبك؟ تواصل معنا" data-en="Didn't find your doctor? Contact us">لم تجد طبيبك؟ تواصل معنا</h2>
-          <p data-ar="فريقنا جاهز لمساعدتك في اختيار الطبيب المناسب وحجز موعدك" data-en="Our team is ready to help you choose the right doctor and book your appointment">فريقنا جاهز لمساعدتك في اختيار الطبيب المناسب وحجز موعدك</p>
-        </div>
-        <div class="book-cta-btns">
-          <a href="appointment.html" class="btn btn-white" data-ar="احجز موعد" data-en="Book Now">احجز موعد</a>
-          <a href="tel:01503808877" class="btn btn-outline-white"><i class="fas fa-phone"></i> 01503808877</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="book-cta">
+<div class="container">
+<div class="book-cta-inner">
+<div>
+<h2 data-ar="لم تجد طبيبك؟ تواصل معنا" data-en="Didn't find your doctor? Contact us">لم تجد طبيبك؟ تواصل معنا</h2>
+<p data-ar="فريقنا جاهز لمساعدتك في اختيار الطبيب المناسب وحجز موعدك" data-en="Our team is ready to help you choose the right doctor and book your appointment">فريقنا جاهز لمساعدتك في اختيار الطبيب المناسب وحجز موعدك</p>
+</div>
+<div class="book-cta-btns">
+<a href="appointment.html" class="btn btn-white" data-ar="احجز موعد" data-en="Book Now">احجز موعد</a>
+<a href="tel:01503808877" class="btn btn-outline-white"><i class="fas fa-phone"></i> 01503808877</a>
+</div>
+</div>
+</div>
+</section>
 
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="assets/Logo.jpg" alt="Ritaj" style="height:60px;margin-bottom:16px" onerror="this.outerHTML='<div style=font-size:24px;font-weight:900;color:#fff>eRitaj</div>'">
-          <p data-ar="صرح طبي متكامل في مدينة سوهاج الجديدة" data-en="A comprehensive medical facility in New Sohag">صرح طبي متكامل في مدينة سوهاج الجديدة</p>
-          <div class="footer-social">
-            <a href="https://www.facebook.com/RitajHospital" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/ritajhospital/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/201503808877" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          </div>
-        </div>
-        <div class="footer-links"><h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4><ul><li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li><li><a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li><li><a href="doctors.html" data-ar="أطباؤنا" data-en="Doctors">أطباؤنا</a></li><li><a href="appointment.html" data-ar="احجز موعد" data-en="Book">احجز موعد</a></li></ul></div>
-        <div class="footer-links"><h4 data-ar="أقسامنا" data-en="Departments">أقسامنا</h4><ul><li><a href="services.html" data-ar="طوارئ" data-en="Emergency">طوارئ</a></li><li><a href="services.html" data-ar="عناية مركزة" data-en="ICU">عناية مركزة</a></li><li><a href="services.html" data-ar="أسنان" data-en="Dental">أسنان</a></li><li><a href="services.html" data-ar="معامل" data-en="Labs">معامل</a></li></ul></div>
-        <div class="footer-contact"><h4 data-ar="تواصل معنا" data-en="Contact">تواصل معنا</h4><p><i class="fas fa-phone"></i><a href="tel:01503808877" dir="ltr">01503808877</a></p><p><i class="fab fa-whatsapp"></i><a href="https://wa.me/201503808877" target="_blank" dir="ltr">01503808877</a></p><p><i class="fas fa-map-marker-alt"></i><span data-ar="سوهاج الجديدة" data-en="New Sohag">سوهاج الجديدة</span></p></div>
-      </div>
-      <div class="footer-bottom"><p>© 2026 Ritaj Specialized Hospital | <a href="https://pioneersxai.github.io/PioneersX-agency-Egy-Sa/" target="_blank">PioneersX ⚡</a></p></div>
-    </div>
-  </footer>
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<img src="assets/Logo.jpg" alt="Ritaj" style="height:60px;margin-bottom:16px" onerror="this.outerHTML='<div style=font-size:24px;font-weight:900;color:#fff>eRitaj</div>'">
+<p data-ar="صرح طبي متكامل في مدينة سوهاج الجديدة" data-en="A comprehensive medical facility in New Sohag">صرح طبي متكامل في مدينة سوهاج الجديدة</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/RitajHospital" target="_blank"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/ritajhospital/" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/201503808877" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="footer-links"><h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4><ul><li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li><li><a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li><li><a href="doctors.html" data-ar="أطباؤنا" data-en="Doctors">أطباؤنا</a></li><li><a href="appointment.html" data-ar="احجز موعد" data-en="Book">احجز موعد</a></li></ul></div>
+<div class="footer-links"><h4 data-ar="أقسامنا" data-en="Departments">أقسامنا</h4><ul><li><a href="services.html" data-ar="طوارئ" data-en="Emergency">طوارئ</a></li><li><a href="services.html" data-ar="عناية مركزة" data-en="ICU">عناية مركزة</a></li><li><a href="services.html" data-ar="أسنان" data-en="Dental">أسنان</a></li><li><a href="services.html" data-ar="معامل" data-en="Labs">معامل</a></li></ul></div>
+<div class="footer-contact"><h4 data-ar="تواصل معنا" data-en="Contact">تواصل معنا</h4><p><i class="fas fa-phone"></i><a href="tel:01503808877" dir="ltr">01503808877</a></p><p><i class="fab fa-whatsapp"></i><a href="https://wa.me/201503808877" target="_blank" dir="ltr">01503808877</a></p><p><i class="fas fa-map-marker-alt"></i><span data-ar="سوهاج الجديدة" data-en="New Sohag">سوهاج الجديدة</span></p></div>
+</div>
+<div class="footer-bottom"><p>© 2026 Ritaj Specialized Hospital | <a href="https://pioneersxai.github.io/PioneersX-agency-Egy-Sa/" target="_blank">PioneersX ⚡</a></p></div>
+</div>
+</footer>
 
-  <a href="https://wa.me/201503808877" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+<a href="https://wa.me/201503808877" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
 
-  <script>
-  let currentLang = 'ar';
-  function toggleLang() {
-    currentLang = currentLang === 'ar' ? 'en' : 'ar';
-    const isAr = currentLang === 'ar';
-    document.getElementById('html-root').lang = currentLang;
-    document.getElementById('html-root').dir = isAr ? 'rtl' : 'ltr';
-    document.getElementById('langLabel').textContent = isAr ? 'EN' : 'عر';
-    document.querySelectorAll('[data-ar]').forEach(el => { el.textContent = isAr ? el.dataset.ar : el.dataset.en; });
-    localStorage.setItem('ritaj-lang', currentLang);
-  }
-  window.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('ritaj-lang');
-    if (saved && saved !== 'ar') toggleLang();
-  });
+<script>
+let currentLang = 'ar';
+function toggleLang() {
+currentLang = currentLang === 'ar' ? 'en' : 'ar';
+const isAr = currentLang === 'ar';
+document.getElementById('html-root').lang = currentLang;
+document.getElementById('html-root').dir = isAr ? 'rtl' : 'ltr';
+// FIX: was 'عر' (truncated Arabic fragment) — now clean 'AR' to match 'EN'.
+document.getElementById('langLabel').textContent = isAr ? 'EN' : 'AR';
+document.querySelectorAll('[data-ar]').forEach(el => { el.textContent = isAr ? el.dataset.ar : el.dataset.en; });
+localStorage.setItem('ritaj-lang', currentLang);
+}
+window.addEventListener('DOMContentLoaded', () => {
+const saved = localStorage.getItem('ritaj-lang');
+if (saved && saved !== 'ar') toggleLang();
+});
 
-  // Filter doctors
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.doctor-full-card').forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-      });
-    });
-  });
+// Filter doctors
+document.querySelectorAll('.filter-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+const filter = btn.dataset.filter;
+document.querySelectorAll('.doctor-full-card').forEach(card => {
+card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+});
+});
+});
 
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
-    document.getElementById('scrollTop').classList.toggle('show', scrollY > 400);
-  });
-  document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('open'); });
-  document.getElementById('scrollTop').addEventListener('click', e => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
-  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.1});
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  </script>
-</body>
-</html>
+window.addEventListener('scroll', () => {
+document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+document.getElementById('scrollTop').classList.toggle('show', scrollY > 400);
+});
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('open'); });
+document.getElementById('scrollTop').addEventListener('click', e => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+
+</body></html>
