@@ -1,117 +1,310 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول | مستشفى ريتاج التخصصي</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة المريض | مستشفى ريتاج التخصصي</title>
+<link rel="icon" type="image/png" href="../assets/Logo.jpg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a7a3c;
+    --green-dark: #145e2e;
+    --green-light: #e8f5ed;
+    --red: #c0392b;
+    --text-dark: #1a2e22;
+    --text-muted: #5a7a65;
+    --border: #c8e0d0;
+    --off-white: #f8faf9;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Cairo',sans-serif; background:var(--off-white); color:var(--text-dark); min-height:100vh; }
 
-    <link rel="icon" type="image/png" href="../assets/Logo.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <style>body{font-family:'Cairo',sans-serif;}</style>
+  /* Top bar */
+  .topbar { background:#fff; border-bottom:1px solid var(--border); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .topbar-brand { display:flex; align-items:center; gap:10px; }
+  .topbar-brand img { height:40px; border-radius:8px; }
+  .topbar-brand span { font-weight:800; font-size:1.05rem; color:var(--green); }
+  .topbar-user { display:flex; align-items:center; gap:14px; }
+  .topbar-user .greeting { font-size:.9rem; color:var(--text-muted); }
+  .topbar-user .greeting strong { color:var(--text-dark); }
+  .logout-btn { background:var(--off-white); border:1px solid var(--border); color:var(--red); padding:9px 16px; border-radius:8px; font-family:inherit; font-size:.85rem; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; transition:.2s; }
+  .logout-btn:hover { background:#fff3f2; border-color:#fcc; }
+
+  .wrap { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
+
+  /* Tabs */
+  .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px; border-bottom:1px solid var(--border); padding-bottom:0; }
+  .tab-btn { background:none; border:none; font-family:inherit; font-size:.9rem; font-weight:700; color:var(--text-muted); padding:12px 16px; cursor:pointer; border-bottom:3px solid transparent; transition:.2s; display:flex; align-items:center; gap:8px; }
+  .tab-btn:hover { color:var(--green); }
+  .tab-btn.active { color:var(--green); border-bottom-color:var(--green); }
+  .tab-btn .count { background:var(--green-light); color:var(--green); font-size:.7rem; font-weight:800; border-radius:20px; padding:1px 8px; }
+
+  .panel { display:none; }
+  .panel.active { display:block; }
+
+  /* Cards */
+  .rec-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-bottom:14px; }
+  .rec-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+  .rec-title { font-size:1rem; font-weight:800; color:var(--text-dark); }
+  .rec-sub { font-size:.82rem; color:var(--text-muted); margin-top:2px; }
+  .rec-date { font-size:.8rem; color:var(--text-muted); white-space:nowrap; }
+  .badge { display:inline-block; font-size:.72rem; font-weight:800; padding:3px 12px; border-radius:20px; }
+  .badge-green { background:var(--green-light); color:var(--green); }
+  .badge-yellow { background:#fff8e1; color:#a16800; }
+  .badge-red { background:#fff3f2; color:var(--red); }
+  .badge-gray { background:#f1f5f3; color:var(--text-muted); }
+  .rec-body { font-size:.875rem; color:var(--text-muted); line-height:1.7; margin-top:8px; }
+  .rec-meds { list-style:none; margin-top:8px; }
+  .rec-meds li { font-size:.85rem; color:var(--text-dark); padding:6px 0; border-top:1px dashed var(--border); }
+  .rec-meds li:first-child { border-top:none; }
+  .rec-file-link { display:inline-flex; align-items:center; gap:6px; margin-top:12px; font-size:.82rem; font-weight:700; color:var(--green); text-decoration:none; }
+  .rec-file-link:hover { text-decoration:underline; }
+
+  .empty-state { text-align:center; padding:60px 20px; color:var(--text-muted); }
+  .empty-state i { font-size:2.4rem; color:var(--border); margin-bottom:14px; display:block; }
+  .loading-state { text-align:center; padding:60px 20px; color:var(--text-muted); }
+  .loading-state i { animation: spin 1s linear infinite; font-size:1.6rem; color:var(--green); margin-bottom:10px; display:block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media(max-width:640px) {
+    .topbar { padding:12px 16px; }
+    .tabs { overflow-x:auto; flex-wrap:nowrap; }
+    .tab-btn { white-space:nowrap; }
+  }
+</style>
 </head>
 <body>
-    <div class="auth-page">
-        <div class="auth-container">
-            <div class="auth-card">
-                <div class="auth-header">
-                    <img src="../assets/Logo.jpg" alt="ريتاج" style="height:56px;object-fit:contain;margin-bottom:10px;border-radius:10px;">
-                    <div class="auth-logo" style="font-size:1.5rem;">مستشفى ريتاج <span class="x">التخصصي</span></div>
-                    <p class="auth-tagline">صحتك أمانتنا، ورعايتك مسؤوليتنا</p>
-                </div>
 
-                <div class="auth-title">
-                    <h1>أهلاً بعودتك</h1>
-                    <p>سجّل الدخول لمتابعة حجوزاتك وزياراتك</p>
-                </div>
+<div class="topbar">
+  <a href="../index.html" class="topbar-brand">
+    <img src="../assets/Logo.jpg" alt="ريتاج">
+    <span>مستشفى ريتاج التخصصي</span>
+  </a>
+  <div class="topbar-user">
+    <span class="greeting">مرحباً، <strong id="patientName">...</strong></span>
+    <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+  </div>
+</div>
 
-                <div class="alert" id="alert"></div>
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="upcoming"><i class="fas fa-calendar-check"></i> المواعيد القادمة <span class="count" id="count-upcoming">0</span></button>
+    <button class="tab-btn" data-tab="past"><i class="fas fa-history"></i> المواعيد السابقة <span class="count" id="count-past">0</span></button>
+    <button class="tab-btn" data-tab="labs"><i class="fas fa-flask"></i> نتائج التحاليل <span class="count" id="count-labs">0</span></button>
+    <button class="tab-btn" data-tab="imaging"><i class="fas fa-x-ray"></i> الأشعة <span class="count" id="count-imaging">0</span></button>
+    <button class="tab-btn" data-tab="reports"><i class="fas fa-file-medical"></i> التقارير الطبية <span class="count" id="count-reports">0</span></button>
+    <button class="tab-btn" data-tab="prescriptions"><i class="fas fa-prescription"></i> الروشتات <span class="count" id="count-prescriptions">0</span></button>
+  </div>
 
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label class="form-label">البريد الإلكتروني</label>
-                        <input type="email" class="form-input" id="email" placeholder="example@email.com" required>
-                    </div>
+  <div class="panel active" id="panel-upcoming"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
+  <div class="panel" id="panel-past"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
+  <div class="panel" id="panel-labs"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
+  <div class="panel" id="panel-imaging"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
+  <div class="panel" id="panel-reports"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
+  <div class="panel" id="panel-prescriptions"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
+</div>
 
-                    <div class="form-group">
-                        <label class="form-label">كلمة المرور</label>
-                        <div class="input-wrapper">
-                            <input type="password" class="form-input" id="password" placeholder="••••••••" required>
-                            <span class="input-icon" onclick="togglePassword()">
-                                <i class="fas fa-eye" id="eyeIcon"></i>
-                            </span>
-                        </div>
-                    </div>
+<script src="../config.js"></script>
+<script src="js/api.js"></script>
+<script>
+// ── Auth guard: bounce straight back to login if there's no token ──
+if (!API.isLoggedIn()) {
+  window.location.href = 'index.html';
+}
 
-                    <a href="forgot-password.html" class="forgot-link">نسيت كلمة المرور؟</a>
+const DEPT_LABELS = {
+  emergency:'وحدة الطوارئ', icu:'العناية المركزة', surgery:'قسم العمليات',
+  obstetrics:'النساء والولادة', dental:'قسم الأسنان', eyes:'طب العيون',
+  radiology:'قسم الأشعة', labs:'معامل ريتاج', internal:'أمراض الباطنة',
+  endocrine:'الغدد والسكر', cosmetics:'قسم التجميل', pharmacy:'صيدلية ريتاج'
+};
+const TIME_LABELS = { morning:'الصباح (9ص - 12م)', afternoon:'الظهيرة (12م - 4م)', evening:'المساء (4م - 9م)' };
+const APPT_STATUS = {
+  pending: {label:'قيد المراجعة', cls:'badge-yellow'},
+  confirmed: {label:'مؤكد', cls:'badge-green'},
+  completed: {label:'مكتمل', cls:'badge-gray'},
+  cancelled: {label:'ملغي', cls:'badge-red'}
+};
+const LAB_STATUS = { pending:{label:'قيد التحليل', cls:'badge-yellow'}, ready:{label:'جاهزة', cls:'badge-green'} };
+const RX_STATUS = { pending:{label:'لم تُصرف بعد', cls:'badge-yellow'}, filled:{label:'تم الصرف', cls:'badge-green'} };
 
-                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">تسجيل الدخول</button>
-                </form>
+function fmtDate(iso) {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString('ar-EG', { year:'numeric', month:'long', day:'numeric' });
+  } catch (e) { return iso; }
+}
 
-                <div class="auth-footer">
-                    ليس لديك حساب؟ <a href="register.html">إنشاء حساب جديد</a>
-                </div>
-            </div>
+function emptyState(icon, text) {
+  return `<div class="empty-state"><i class="fas ${icon}"></i><div>${text}</div></div>`;
+}
+
+function fileLink(url) {
+  if (!url) return '';
+  return `<a class="rec-file-link" href="${url}" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> عرض الملف</a>`;
+}
+
+// ── Renderers per record type ──
+function renderAppointments(list, pastMode) {
+  if (!list.length) {
+    return emptyState('fa-calendar-xmark', pastMode ? 'لا توجد مواعيد سابقة' : 'لا توجد مواعيد قادمة حالياً');
+  }
+  return list.map(a => {
+    const st = APPT_STATUS[a.status] || APPT_STATUS.pending;
+    const dept = DEPT_LABELS[a.department] || a.department;
+    return `
+    <div class="rec-card">
+      <div class="rec-card-head">
+        <div>
+          <div class="rec-title">${dept}</div>
+          <div class="rec-sub">${a.doctorName ? 'الطبيب: ' + a.doctorName : 'سيتم تحديد الطبيب من قبل الفريق'}</div>
         </div>
-    </div>
+        <div style="text-align:left">
+          <span class="badge ${st.cls}">${st.label}</span>
+          <div class="rec-date">${fmtDate(a.date)}${a.time ? ' — ' + (TIME_LABELS[a.time] || a.time) : ''}</div>
+        </div>
+      </div>
+      ${a.notes ? `<div class="rec-body">${a.notes}</div>` : ''}
+    </div>`;
+  }).join('');
+}
 
-    <script src="../config.js"></script>
-    <script src="js/api.js"></script>
-    <script>
-        if (API.isLoggedIn()) {
-            window.location.href = 'dashboard.html';
-        }
+function renderLabs(list) {
+  if (!list.length) return emptyState('fa-flask', 'لا توجد نتائج تحاليل بعد');
+  return list.map(l => {
+    const st = LAB_STATUS[l.status] || LAB_STATUS.pending;
+    return `
+    <div class="rec-card">
+      <div class="rec-card-head">
+        <div class="rec-title">${l.testName}</div>
+        <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(l.date)}</div></div>
+      </div>
+      ${l.resultSummary ? `<div class="rec-body">${l.resultSummary}</div>` : ''}
+      ${fileLink(l.fileUrl)}
+    </div>`;
+  }).join('');
+}
 
-        function togglePassword() {
-            const input = document.getElementById('password');
-            const icon = document.getElementById('eyeIcon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.replace('fa-eye', 'fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.replace('fa-eye-slash', 'fa-eye');
-            }
-        }
+function renderImaging(list) {
+  if (!list.length) return emptyState('fa-x-ray', 'لا توجد أشعة مسجلة بعد');
+  return list.map(i => `
+    <div class="rec-card">
+      <div class="rec-card-head">
+        <div>
+          <div class="rec-title">${i.type}${i.bodyPart ? ' — ' + i.bodyPart : ''}</div>
+        </div>
+        <div class="rec-date">${fmtDate(i.date)}</div>
+      </div>
+      ${i.findings ? `<div class="rec-body">${i.findings}</div>` : ''}
+      ${fileLink(i.fileUrl)}
+    </div>`).join('');
+}
 
-        function showAlert(message, type = 'error') {
-            const alert = document.getElementById('alert');
-            alert.className = `alert alert-${type} show`;
-            alert.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
-        }
+function renderReports(list) {
+  if (!list.length) return emptyState('fa-file-medical', 'لا توجد تقارير طبية بعد');
+  return list.map(r => `
+    <div class="rec-card">
+      <div class="rec-card-head">
+        <div>
+          <div class="rec-title">${r.title}</div>
+          <div class="rec-sub">${[r.doctorName, r.department].filter(Boolean).join(' — ')}</div>
+        </div>
+        <div class="rec-date">${fmtDate(r.date)}</div>
+      </div>
+      ${r.content ? `<div class="rec-body">${r.content}</div>` : ''}
+      ${fileLink(r.fileUrl)}
+    </div>`).join('');
+}
 
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+function renderPrescriptions(list) {
+  if (!list.length) return emptyState('fa-prescription', 'لا توجد روشتات بعد');
+  return list.map(p => {
+    const st = RX_STATUS[p.status] || RX_STATUS.pending;
+    const meds = (p.medications || []).map(m =>
+      `<li><strong>${m.name}</strong>${m.dosage ? ' — ' + m.dosage : ''}${m.frequency ? ' — ' + m.frequency : ''}${m.duration ? ' — ' + m.duration : ''}</li>`
+    ).join('');
+    return `
+    <div class="rec-card">
+      <div class="rec-card-head">
+        <div class="rec-title">${p.doctorName ? 'روشتة د. ' + p.doctorName : 'روشتة طبية'}</div>
+        <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(p.date)}</div></div>
+      </div>
+      ${meds ? `<ul class="rec-meds">${meds}</ul>` : ''}
+      ${p.notes ? `<div class="rec-body">${p.notes}</div>` : ''}
+      ${fileLink(p.fileUrl)}
+    </div>`;
+  }).join('');
+}
 
-            const btn = document.getElementById('submitBtn');
-            const emailInput = document.getElementById('email');
-            const passwordInput = document.getElementById('password');
+// ── Data loading per tab ──
+const TAB_CONFIG = {
+  upcoming:      { fetch: () => API.getMyAppointments(), render: (d) => renderAppointments(d, false), countId:'count-upcoming' },
+  past:          { fetch: () => API.getMyPastAppointments(), render: (d) => renderAppointments(d, true), countId:'count-past' },
+  labs:          { fetch: () => API.getMyLabs(), render: renderLabs, countId:'count-labs' },
+  imaging:       { fetch: () => API.getMyImaging(), render: renderImaging, countId:'count-imaging' },
+  reports:       { fetch: () => API.getMyReports(), render: renderReports, countId:'count-reports' },
+  prescriptions: { fetch: () => API.getMyPrescriptions(), render: renderPrescriptions, countId:'count-prescriptions' },
+};
+const loadedTabs = new Set();
 
-            const cleanEmail = emailInput.value.trim().toLowerCase();
-            const password = passwordInput.value;
+async function loadTab(tabKey) {
+  const panel = document.getElementById('panel-' + tabKey);
+  const cfg = TAB_CONFIG[tabKey];
+  try {
+    const result = await cfg.fetch();
+    if (!result.success) {
+      panel.innerHTML = emptyState('fa-triangle-exclamation', result.message || 'تعذر تحميل البيانات، حاول مرة أخرى');
+      return;
+    }
+    const list = Array.isArray(result.data) ? result.data : [];
+    panel.innerHTML = cfg.render(list);
+    document.getElementById(cfg.countId).textContent = list.length;
+    loadedTabs.add(tabKey);
+  } catch (err) {
+    console.error(tabKey, err);
+    panel.innerHTML = emptyState('fa-triangle-exclamation', 'حدث خطأ أثناء تحميل البيانات');
+  }
+}
 
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> جارِ تسجيل الدخول...';
+// ── Tabs wiring ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tabKey = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + tabKey).classList.add('active');
+    if (!loadedTabs.has(tabKey)) loadTab(tabKey);
+  });
+});
 
-            try {
-                const result = await API.login(cleanEmail, password);
+// ── Logout ──
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await API.logout();
+  window.location.href = 'index.html';
+});
 
-                if (result.success) {
-                    showAlert('تم تسجيل الدخول بنجاح! جارِ التحويل...', 'success');
-                    setTimeout(() => window.location.href = 'dashboard.html', 800);
-                } else {
-                    showAlert(result.message || 'البريد الإلكتروني أو كلمة المرور غير صحيحة');
-                    btn.disabled = false;
-                    btn.innerHTML = 'تسجيل الدخول';
-                }
-            } catch (err) {
-                console.error("Critical Login Error:", err);
-                showAlert("فشل الاتصال. برجاء التحقق من الإنترنت.");
-                btn.disabled = false;
-                btn.innerHTML = 'تسجيل الدخول';
-            }
-        });
-    </script>
+// ── Init: greet patient, load first tab ──
+(async function init() {
+  const cached = API.getUser();
+  if (cached && cached.firstName) {
+    document.getElementById('patientName').textContent = `${cached.firstName} ${cached.lastName || ''}`.trim();
+  }
+  const me = await API.getMe();
+  if (me.success && me.data) {
+    document.getElementById('patientName').textContent = `${me.data.firstName} ${me.data.lastName || ''}`.trim();
+    API.setUser(me.data);
+  } else if (me.status === 401) {
+    // token expired/invalid — send back to login
+    API.removeToken();
+    window.location.href = 'index.html';
+    return;
+  }
+  loadTab('upcoming');
+})();
+</script>
+
 </body>
 </html>
