@@ -1,40 +1,50 @@
 /**
- * ============================================================
- *  BRAND CONFIG — مستشفى ريتاج التخصصي — Ritaj Specialized Hospital
- *  Edit ONLY this file to rebrand
- * ============================================================
- */
+* ============================================================
+* BRAND CONFIG — مستشفى ريتاج التخصصي — Ritaj Specialized Hospital
+* Edit ONLY this file to rebrand
+* ============================================================
+*/
 
 const BRAND = {
 
-  name:        "مستشفى ريتاج التخصصي",
-  tagline:     "صحتك أمانتنا، ورعايتك مسؤوليتنا",
+  name: "مستشفى ريتاج التخصصي",
+  tagline: "صحتك أمانتنا، ورعايتك مسؤوليتنا",
   description: "مستشفى ريتاج التخصصي — صرح طبي متكامل في سوهاج الجديدة. عيادات خارجية، طوارئ، عمليات، عناية مركزة، أشعة، مختبرات وأكثر.",
 
-  primaryColor: "#1a7a3c",   // green
+  primaryColor: "#1a7a3c", // green
 
-  logoLetter:  "ر",
-  logoFile:    "assets/Logo.jpg",
+  logoLetter: "ر",
+  logoFile: "assets/Logo.jpg",
   faviconColor: "%231a7a3c",
 
-  phone:      "01503808877",
-  whatsapp:   "201503808877",
-  email:      "info@ritajhospital.com",   // TODO: confirm real support email with Dr. Yousef
-  city:       "مدينة سوهاج الجديدة — محافظة سوهاج — مصر",
+  phone: "01503808877",
+  whatsapp: "201503808877",
+  email: "info@ritajhospital.com", // TODO: confirm real support email with Dr. Yousef
+  city: "مدينة سوهاج الجديدة — محافظة سوهاج — مصر",
 
-  apiBase:    "https://pioneersx-backend.onrender.com/api",
-  domain:     "https://Ritaj-Hostpital.pages.dev",   // TODO: update once Cloudflare Pages domain is live
+  // FIX: this used to point at pioneersx-backend.onrender.com — the
+  // agency's OWN internal subscription/billing backend, not a real
+  // hospital backend. Patient registrations from this site would have
+  // either failed or landed in the wrong database entirely.
+  //
+  // Now points at the dedicated Ritaj backend, live on Render:
+  // https://ritajhospital-backend.onrender.com — separate service,
+  // separate database (same cluster, "ritaj" db), fully isolated
+  // from the agency's own data.
+  apiBase: "https://ritajhospital-backend.onrender.com/api",
+
+  domain: "https://Ritaj-Hostpital.pages.dev", // TODO: update once Cloudflare Pages domain is live
 
   social: {
-    twitter:   "",
-    linkedin:  "",
+    twitter: "",
+    linkedin: "",
     instagram: "https://www.instagram.com/ritajhospital/",
-    youtube:   "",
-    tiktok:    "",
+    youtube: "",
+    tiktok: "",
   },
 
   lang: "ar",
-  dir:  "rtl",
+  dir: "rtl",
 
   // Facebook isn't in the standard BRAND.social schema — kept here for reference:
   // facebook: "https://www.facebook.com/RitajHospital"
@@ -46,16 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.title = `${BRAND.name} - ${BRAND.tagline}`;
   document.documentElement.lang = BRAND.lang;
-  document.documentElement.dir  = BRAND.dir;
+  document.documentElement.dir = BRAND.dir;
 
   const replacements = {
-    "brand-name":        BRAND.name,
-    "brand-tagline":     BRAND.tagline,
+    "brand-name": BRAND.name,
+    "brand-tagline": BRAND.tagline,
     "brand-description": BRAND.description,
-    "brand-phone":       BRAND.phone,
-    "brand-email":       BRAND.email,
-    "brand-city":        BRAND.city,
-    "brand-whatsapp":    BRAND.whatsapp,
+    "brand-phone": BRAND.phone,
+    "brand-email": BRAND.email,
+    "brand-city": BRAND.city,
+    "brand-whatsapp": BRAND.whatsapp,
   };
 
   Object.entries(replacements).forEach(([key, value]) => {
@@ -77,11 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const socialMap = {
-    "social-twitter":   BRAND.social.twitter,
-    "social-linkedin":  BRAND.social.linkedin,
+    "social-twitter": BRAND.social.twitter,
+    "social-linkedin": BRAND.social.linkedin,
     "social-instagram": BRAND.social.instagram,
-    "social-youtube":   BRAND.social.youtube,
-    "social-tiktok":    BRAND.social.tiktok,
+    "social-youtube": BRAND.social.youtube,
+    "social-tiktok": BRAND.social.tiktok,
   };
   Object.entries(socialMap).forEach(([key, url]) => {
     document.querySelectorAll(`[data-brand="${key}"]`).forEach(el => {
