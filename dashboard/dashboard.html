@@ -6,104 +6,224 @@
 <title>لوحة المريض | مستشفى ريتاج التخصصي</title>
 <link rel="icon" type="image/png" href="../assets/Logo.jpg">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --green: #1a7a3c;
     --green-dark: #145e2e;
     --green-light: #e8f5ed;
     --red: #c0392b;
+    --red-dark: #962d22;
     --text-dark: #1a2e22;
+    --text-mid: #2d5a3d;
     --text-muted: #5a7a65;
     --border: #c8e0d0;
     --off-white: #f8faf9;
+    --light-gray: #f1f5f3;
+    --shadow-sm: 0 2px 8px rgba(26,122,60,.08);
+    --shadow-md: 0 8px 24px rgba(26,122,60,.12);
+    --shadow-lg: 0 16px 48px rgba(26,122,60,.16);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
   body { font-family:'Cairo',sans-serif; background:var(--off-white); color:var(--text-dark); min-height:100vh; }
+  .container { max-width:1180px; margin:0 auto; padding:0 24px; }
 
-  /* Top bar */
-  .topbar { background:#fff; border-bottom:1px solid var(--border); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-  .topbar-brand { display:flex; align-items:center; gap:10px; }
-  .topbar-brand img { height:40px; border-radius:8px; }
-  .topbar-brand span { font-weight:800; font-size:1.05rem; color:var(--green); }
-  .topbar-user { display:flex; align-items:center; gap:14px; }
-  .topbar-user .greeting { font-size:.9rem; color:var(--text-muted); }
-  .topbar-user .greeting strong { color:var(--text-dark); }
-  .logout-btn { background:var(--off-white); border:1px solid var(--border); color:var(--red); padding:9px 16px; border-radius:8px; font-family:inherit; font-size:.85rem; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; transition:.2s; }
+  /* ── Top nav ── */
+  .dash-nav {
+    position:sticky; top:0; z-index:100; background:#fff;
+    border-bottom:1px solid var(--border); box-shadow:var(--shadow-sm);
+  }
+  .dash-nav-inner {
+    max-width:1180px; margin:0 auto; padding:0 24px; height:72px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    direction:ltr;
+  }
+  .dash-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .dash-logo img { height:42px; border-radius:9px; object-fit:cover; }
+  .dash-logo span { font-weight:900; font-size:1.05rem; color:var(--green); font-family:'Cairo',sans-serif; direction:rtl; }
+  .dash-nav-right { display:flex; align-items:center; gap:12px; direction:rtl; }
+  .nav-book-btn {
+    display:flex; align-items:center; gap:8px; background:var(--green); color:#fff;
+    padding:10px 18px; border-radius:9px; text-decoration:none; font-size:.85rem;
+    font-weight:700; transition:.25s; box-shadow:0 4px 12px rgba(26,122,60,.22);
+  }
+  .nav-book-btn:hover { background:var(--green-dark); transform:translateY(-1px); }
+  .user-chip { display:flex; align-items:center; gap:10px; padding:6px 6px 6px 6px; }
+  .avatar {
+    width:38px; height:38px; border-radius:50%; background:var(--green-light); color:var(--green);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.95rem; flex-shrink:0;
+  }
+  .user-chip .who { display:flex; flex-direction:column; line-height:1.25; }
+  .user-chip .who small { color:var(--text-muted); font-size:.72rem; font-weight:600; }
+  .user-chip .who strong { color:var(--text-dark); font-size:.88rem; }
+  .logout-btn {
+    background:var(--off-white); border:1px solid var(--border); color:var(--red);
+    width:40px; height:40px; border-radius:9px; cursor:pointer; display:flex;
+    align-items:center; justify-content:center; transition:.25s; font-size:.95rem;
+  }
   .logout-btn:hover { background:#fff3f2; border-color:#fcc; }
 
-  .wrap { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
+  /* ── Hero banner ── */
+  .dash-hero {
+    background:linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    padding:44px 0 76px; color:#fff;
+  }
+  .dash-hero h1 { font-size:1.9rem; font-weight:900; margin-bottom:8px; }
+  .dash-hero h1 span.emoji { display:inline-block; }
+  .dash-hero p { color:rgba(255,255,255,.82); font-size:.95rem; max-width:520px; line-height:1.7; }
 
-  /* Tabs */
-  .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px; border-bottom:1px solid var(--border); padding-bottom:0; }
-  .tab-btn { background:none; border:none; font-family:inherit; font-size:.9rem; font-weight:700; color:var(--text-muted); padding:12px 16px; cursor:pointer; border-bottom:3px solid transparent; transition:.2s; display:flex; align-items:center; gap:8px; }
-  .tab-btn:hover { color:var(--green); }
-  .tab-btn.active { color:var(--green); border-bottom-color:var(--green); }
-  .tab-btn .count { background:var(--green-light); color:var(--green); font-size:.7rem; font-weight:800; border-radius:20px; padding:1px 8px; }
+  /* ── Stat cards (float over hero bottom edge) ── */
+  .stats-row {
+    display:grid; grid-template-columns:repeat(6,1fr); gap:14px;
+    margin-top:-46px; margin-bottom:32px;
+  }
+  .stat-card {
+    background:#fff; border-radius:14px; padding:16px 14px;
+    box-shadow:var(--shadow-md); text-align:center; cursor:pointer;
+    border:2px solid transparent; transition:.2s;
+  }
+  .stat-card:hover { transform:translateY(-3px); border-color:var(--green); }
+  .stat-card.active { border-color:var(--green); background:var(--green-light); }
+  .stat-card i { font-size:1.3rem; color:var(--green); margin-bottom:8px; display:block; }
+  .stat-card .num { font-size:1.4rem; font-weight:900; color:var(--text-dark); display:block; }
+  .stat-card .lbl { font-size:.72rem; color:var(--text-muted); font-weight:700; display:block; margin-top:2px; }
 
-  .panel { display:none; }
+  /* ── Panels ── */
+  .panel { display:none; padding-bottom:70px; }
   .panel.active { display:block; }
+  .panel-title { font-size:1.15rem; font-weight:800; color:var(--text-dark); margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .panel-title i { color:var(--green); }
 
-  /* Cards */
-  .rec-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-bottom:14px; }
-  .rec-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+  /* ── Record cards ── */
+  .rec-card {
+    background:#fff; border:1px solid var(--border); border-radius:16px;
+    padding:20px; margin-bottom:14px; display:flex; gap:16px; align-items:flex-start;
+    transition:.2s;
+  }
+  .rec-card:hover { box-shadow:var(--shadow-md); border-color:var(--green); }
+  .rec-icon {
+    width:52px; height:52px; border-radius:13px; background:var(--green-light);
+    color:var(--green); display:flex; align-items:center; justify-content:center;
+    font-size:1.25rem; flex-shrink:0;
+  }
+  .rec-icon.red { background:#fff3f2; color:var(--red); }
+  .rec-main { flex:1; min-width:0; }
+  .rec-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
   .rec-title { font-size:1rem; font-weight:800; color:var(--text-dark); }
-  .rec-sub { font-size:.82rem; color:var(--text-muted); margin-top:2px; }
-  .rec-date { font-size:.8rem; color:var(--text-muted); white-space:nowrap; }
-  .badge { display:inline-block; font-size:.72rem; font-weight:800; padding:3px 12px; border-radius:20px; }
+  .rec-sub { font-size:.82rem; color:var(--text-muted); margin-top:3px; }
+  .rec-date { font-size:.78rem; color:var(--text-muted); white-space:nowrap; font-weight:600; }
+  .badge { display:inline-block; font-size:.72rem; font-weight:800; padding:4px 12px; border-radius:20px; white-space:nowrap; }
   .badge-green { background:var(--green-light); color:var(--green); }
   .badge-yellow { background:#fff8e1; color:#a16800; }
   .badge-red { background:#fff3f2; color:var(--red); }
-  .badge-gray { background:#f1f5f3; color:var(--text-muted); }
-  .rec-body { font-size:.875rem; color:var(--text-muted); line-height:1.7; margin-top:8px; }
-  .rec-meds { list-style:none; margin-top:8px; }
-  .rec-meds li { font-size:.85rem; color:var(--text-dark); padding:6px 0; border-top:1px dashed var(--border); }
-  .rec-meds li:first-child { border-top:none; }
-  .rec-file-link { display:inline-flex; align-items:center; gap:6px; margin-top:12px; font-size:.82rem; font-weight:700; color:var(--green); text-decoration:none; }
-  .rec-file-link:hover { text-decoration:underline; }
+  .badge-gray { background:var(--light-gray); color:var(--text-muted); }
+  .rec-body { font-size:.875rem; color:var(--text-mid); line-height:1.7; margin-top:10px; background:var(--off-white); border-radius:10px; padding:12px 14px; }
+  .rec-meds { list-style:none; margin-top:10px; display:flex; flex-direction:column; gap:6px; }
+  .rec-meds li { font-size:.85rem; color:var(--text-dark); background:var(--off-white); border-radius:8px; padding:8px 12px; }
+  .rec-file-link {
+    display:inline-flex; align-items:center; gap:6px; margin-top:12px;
+    font-size:.8rem; font-weight:700; color:var(--green); text-decoration:none;
+    border:1.5px solid var(--green); padding:7px 16px; border-radius:8px; transition:.2s;
+  }
+  .rec-file-link:hover { background:var(--green); color:#fff; }
 
-  .empty-state { text-align:center; padding:60px 20px; color:var(--text-muted); }
-  .empty-state i { font-size:2.4rem; color:var(--border); margin-bottom:14px; display:block; }
-  .loading-state { text-align:center; padding:60px 20px; color:var(--text-muted); }
-  .loading-state i { animation: spin 1s linear infinite; font-size:1.6rem; color:var(--green); margin-bottom:10px; display:block; }
+  /* ── Empty / loading states ── */
+  .empty-state, .loading-state {
+    text-align:center; padding:64px 20px; color:var(--text-muted);
+    background:#fff; border:1px dashed var(--border); border-radius:18px;
+  }
+  .empty-state .ic, .loading-state .ic {
+    width:74px; height:74px; border-radius:50%; background:var(--green-light);
+    color:var(--green); display:flex; align-items:center; justify-content:center;
+    font-size:1.8rem; margin:0 auto 18px;
+  }
+  .empty-state p { font-size:.95rem; font-weight:700; color:var(--text-dark); margin-bottom:6px; }
+  .empty-state span { font-size:.82rem; color:var(--text-muted); }
+  .empty-state .btn-cta {
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
+    background:var(--green); color:#fff; padding:11px 24px; border-radius:9px;
+    text-decoration:none; font-size:.85rem; font-weight:700; transition:.2s;
+  }
+  .empty-state .btn-cta:hover { background:var(--green-dark); }
+  .loading-state .ic i { animation: spin 1s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  @media(max-width:900px) {
+    .stats-row { grid-template-columns:repeat(3,1fr); }
+  }
   @media(max-width:640px) {
-    .topbar { padding:12px 16px; }
-    .tabs { overflow-x:auto; flex-wrap:nowrap; }
-    .tab-btn { white-space:nowrap; }
+    .dash-nav-inner { padding:0 16px; }
+    .nav-book-btn span { display:none; }
+    .user-chip .who { display:none; }
+    .dash-hero { padding:32px 0 64px; }
+    .dash-hero h1 { font-size:1.5rem; }
+    .stats-row { grid-template-columns:repeat(2,1fr); margin-top:-38px; }
+    .rec-card { flex-direction:column; }
+    .rec-date { white-space:normal; }
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a href="../index.html" class="topbar-brand">
-    <img src="../assets/Logo.jpg" alt="ريتاج">
-    <span>مستشفى ريتاج التخصصي</span>
-  </a>
-  <div class="topbar-user">
-    <span class="greeting">مرحباً، <strong id="patientName">...</strong></span>
-    <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+<nav class="dash-nav">
+  <div class="dash-nav-inner">
+    <a href="../index.html" class="dash-logo">
+      <img src="../assets/Logo.jpg" alt="ريتاج">
+      <span>مستشفى ريتاج التخصصي</span>
+    </a>
+    <div class="dash-nav-right">
+      <a href="../appointment.html" class="nav-book-btn"><i class="fas fa-calendar-plus"></i> <span>حجز موعد جديد</span></a>
+      <div class="user-chip">
+        <div class="avatar" id="avatarInitial">؟</div>
+        <div class="who"><small>مرحباً بعودتك</small><strong id="patientName">...</strong></div>
+      </div>
+      <button class="logout-btn" id="logoutBtn" title="تسجيل الخروج"><i class="fas fa-sign-out-alt"></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="dash-hero">
+  <div class="container">
+    <h1>أهلاً بك، <span id="patientNameHero">...</span> <span class="emoji">👋</span></h1>
+    <p>هذه لوحتك الطبية الخاصة — تابع مواعيدك، نتائج تحاليلك، الأشعة، التقارير والروشتات من مكان واحد.</p>
   </div>
 </div>
 
-<div class="wrap">
-  <div class="tabs" id="tabs">
-    <button class="tab-btn active" data-tab="upcoming"><i class="fas fa-calendar-check"></i> المواعيد القادمة <span class="count" id="count-upcoming">0</span></button>
-    <button class="tab-btn" data-tab="past"><i class="fas fa-history"></i> المواعيد السابقة <span class="count" id="count-past">0</span></button>
-    <button class="tab-btn" data-tab="labs"><i class="fas fa-flask"></i> نتائج التحاليل <span class="count" id="count-labs">0</span></button>
-    <button class="tab-btn" data-tab="imaging"><i class="fas fa-x-ray"></i> الأشعة <span class="count" id="count-imaging">0</span></button>
-    <button class="tab-btn" data-tab="reports"><i class="fas fa-file-medical"></i> التقارير الطبية <span class="count" id="count-reports">0</span></button>
-    <button class="tab-btn" data-tab="prescriptions"><i class="fas fa-prescription"></i> الروشتات <span class="count" id="count-prescriptions">0</span></button>
+<div class="container">
+  <div class="stats-row" id="tabs">
+    <div class="stat-card active" data-tab="upcoming"><i class="fas fa-calendar-check"></i><span class="num" id="count-upcoming">0</span><span class="lbl">مواعيد قادمة</span></div>
+    <div class="stat-card" data-tab="past"><i class="fas fa-history"></i><span class="num" id="count-past">0</span><span class="lbl">مواعيد سابقة</span></div>
+    <div class="stat-card" data-tab="labs"><i class="fas fa-flask"></i><span class="num" id="count-labs">0</span><span class="lbl">نتائج تحاليل</span></div>
+    <div class="stat-card" data-tab="imaging"><i class="fas fa-x-ray"></i><span class="num" id="count-imaging">0</span><span class="lbl">الأشعة</span></div>
+    <div class="stat-card" data-tab="reports"><i class="fas fa-file-medical"></i><span class="num" id="count-reports">0</span><span class="lbl">تقارير طبية</span></div>
+    <div class="stat-card" data-tab="prescriptions"><i class="fas fa-prescription"></i><span class="num" id="count-prescriptions">0</span><span class="lbl">الروشتات</span></div>
   </div>
 
-  <div class="panel active" id="panel-upcoming"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
-  <div class="panel" id="panel-past"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
-  <div class="panel" id="panel-labs"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
-  <div class="panel" id="panel-imaging"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
-  <div class="panel" id="panel-reports"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
-  <div class="panel" id="panel-prescriptions"><div class="loading-state"><i class="fas fa-spinner"></i><div>جارِ التحميل...</div></div></div>
+  <div class="panel active" id="panel-upcoming">
+    <div class="panel-title"><i class="fas fa-calendar-check"></i> المواعيد القادمة</div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+  </div>
+  <div class="panel" id="panel-past">
+    <div class="panel-title"><i class="fas fa-history"></i> المواعيد السابقة</div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+  </div>
+  <div class="panel" id="panel-labs">
+    <div class="panel-title"><i class="fas fa-flask"></i> نتائج التحاليل</div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+  </div>
+  <div class="panel" id="panel-imaging">
+    <div class="panel-title"><i class="fas fa-x-ray"></i> الأشعة</div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+  </div>
+  <div class="panel" id="panel-reports">
+    <div class="panel-title"><i class="fas fa-file-medical"></i> التقارير الطبية</div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+  </div>
+  <div class="panel" id="panel-prescriptions">
+    <div class="panel-title"><i class="fas fa-prescription"></i> الروشتات</div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+  </div>
 </div>
 
 <script src="../config.js"></script>
@@ -137,89 +257,106 @@ function fmtDate(iso) {
   } catch (e) { return iso; }
 }
 
-function emptyState(icon, text) {
-  return `<div class="empty-state"><i class="fas ${icon}"></i><div>${text}</div></div>`;
+function emptyState(icon, title, sub, cta) {
+  return `<div class="empty-state">
+    <div class="ic"><i class="fas ${icon}"></i></div>
+    <p>${title}</p>
+    ${sub ? `<span>${sub}</span>` : ''}
+    ${cta ? `<a href="${cta.href}" class="btn-cta"><i class="fas fa-plus"></i> ${cta.label}</a>` : ''}
+  </div>`;
 }
 
 function fileLink(url) {
   if (!url) return '';
-  return `<a class="rec-file-link" href="${url}" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> عرض الملف</a>`;
+  return `<a class="rec-file-link" href="${url}" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> عرض / تحميل الملف</a>`;
 }
 
 // ── Renderers per record type ──
 function renderAppointments(list, pastMode) {
   if (!list.length) {
-    return emptyState('fa-calendar-xmark', pastMode ? 'لا توجد مواعيد سابقة' : 'لا توجد مواعيد قادمة حالياً');
+    return pastMode
+      ? emptyState('fa-calendar-xmark', 'لا توجد مواعيد سابقة', 'ستظهر هنا مواعيدك بعد اكتمالها')
+      : emptyState('fa-calendar-xmark', 'لا توجد مواعيد قادمة حالياً', 'يمكنك حجز موعد جديد في أي وقت', {href:'../appointment.html', label:'احجز موعدك الآن'});
   }
   return list.map(a => {
     const st = APPT_STATUS[a.status] || APPT_STATUS.pending;
     const dept = DEPT_LABELS[a.department] || a.department;
     return `
     <div class="rec-card">
-      <div class="rec-card-head">
-        <div>
-          <div class="rec-title">${dept}</div>
-          <div class="rec-sub">${a.doctorName ? 'الطبيب: ' + a.doctorName : 'سيتم تحديد الطبيب من قبل الفريق'}</div>
+      <div class="rec-icon"><i class="fas fa-calendar-check"></i></div>
+      <div class="rec-main">
+        <div class="rec-card-head">
+          <div>
+            <div class="rec-title">${dept}</div>
+            <div class="rec-sub">${a.doctorName ? 'الطبيب: ' + a.doctorName : 'سيتم تحديد الطبيب من قبل الفريق الطبي'}</div>
+          </div>
+          <div style="text-align:left">
+            <span class="badge ${st.cls}">${st.label}</span>
+            <div class="rec-date">${fmtDate(a.date)}${a.time ? ' — ' + (TIME_LABELS[a.time] || a.time) : ''}</div>
+          </div>
         </div>
-        <div style="text-align:left">
-          <span class="badge ${st.cls}">${st.label}</span>
-          <div class="rec-date">${fmtDate(a.date)}${a.time ? ' — ' + (TIME_LABELS[a.time] || a.time) : ''}</div>
-        </div>
+        ${a.notes ? `<div class="rec-body">${a.notes}</div>` : ''}
       </div>
-      ${a.notes ? `<div class="rec-body">${a.notes}</div>` : ''}
     </div>`;
   }).join('');
 }
 
 function renderLabs(list) {
-  if (!list.length) return emptyState('fa-flask', 'لا توجد نتائج تحاليل بعد');
+  if (!list.length) return emptyState('fa-flask', 'لا توجد نتائج تحاليل بعد', 'ستظهر نتائج تحاليلك هنا فور اعتمادها من المعمل');
   return list.map(l => {
     const st = LAB_STATUS[l.status] || LAB_STATUS.pending;
     return `
     <div class="rec-card">
-      <div class="rec-card-head">
-        <div class="rec-title">${l.testName}</div>
-        <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(l.date)}</div></div>
+      <div class="rec-icon"><i class="fas fa-flask"></i></div>
+      <div class="rec-main">
+        <div class="rec-card-head">
+          <div class="rec-title">${l.testName}</div>
+          <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(l.date)}</div></div>
+        </div>
+        ${l.resultSummary ? `<div class="rec-body">${l.resultSummary}</div>` : ''}
+        ${fileLink(l.fileUrl)}
       </div>
-      ${l.resultSummary ? `<div class="rec-body">${l.resultSummary}</div>` : ''}
-      ${fileLink(l.fileUrl)}
     </div>`;
   }).join('');
 }
 
 function renderImaging(list) {
-  if (!list.length) return emptyState('fa-x-ray', 'لا توجد أشعة مسجلة بعد');
+  if (!list.length) return emptyState('fa-x-ray', 'لا توجد أشعة مسجلة بعد', 'ستظهر تقارير الأشعة الخاصة بك هنا');
   return list.map(i => `
     <div class="rec-card">
-      <div class="rec-card-head">
-        <div>
+      <div class="rec-icon"><i class="fas fa-x-ray"></i></div>
+      <div class="rec-main">
+        <div class="rec-card-head">
           <div class="rec-title">${i.type}${i.bodyPart ? ' — ' + i.bodyPart : ''}</div>
+          <div class="rec-date">${fmtDate(i.date)}</div>
         </div>
-        <div class="rec-date">${fmtDate(i.date)}</div>
+        ${i.findings ? `<div class="rec-body">${i.findings}</div>` : ''}
+        ${fileLink(i.fileUrl)}
       </div>
-      ${i.findings ? `<div class="rec-body">${i.findings}</div>` : ''}
-      ${fileLink(i.fileUrl)}
     </div>`).join('');
 }
 
 function renderReports(list) {
-  if (!list.length) return emptyState('fa-file-medical', 'لا توجد تقارير طبية بعد');
+  if (!list.length) return emptyState('fa-file-medical', 'لا توجد تقارير طبية بعد', 'ستظهر التقارير التي يرفعها الفريق الطبي هنا');
   return list.map(r => `
     <div class="rec-card">
-      <div class="rec-card-head">
-        <div>
-          <div class="rec-title">${r.title}</div>
-          <div class="rec-sub">${[r.doctorName, r.department].filter(Boolean).join(' — ')}</div>
+      <div class="rec-icon"><i class="fas fa-file-medical"></i></div>
+      <div class="rec-main">
+        <div class="rec-card-head">
+          <div>
+            <div class="rec-title">${r.title}</div>
+            <div class="rec-sub">${[r.doctorName, r.department].filter(Boolean).join(' — ')}</div>
+          </div>
+          <div class="rec-date">${fmtDate(r.date)}</div>
         </div>
-        <div class="rec-date">${fmtDate(r.date)}</div>
+        ${r.content ? `<div class="rec-body">${r.content}</div>` : ''}
+        ${fileLink(r.fileUrl)}
       </div>
-      ${r.content ? `<div class="rec-body">${r.content}</div>` : ''}
-      ${fileLink(r.fileUrl)}
     </div>`).join('');
 }
 
 function renderPrescriptions(list) {
-  if (!list.length) return emptyState('fa-prescription', 'لا توجد روشتات بعد');
+  if (!list.length) return emptyState('fa-prescription', 'لا توجد روشتات بعد', 'ستظهر الروشتات الطبية الخاصة بك هنا');
   return list.map(p => {
     const st = RX_STATUS[p.status] || RX_STATUS.pending;
     const meds = (p.medications || []).map(m =>
@@ -227,13 +364,16 @@ function renderPrescriptions(list) {
     ).join('');
     return `
     <div class="rec-card">
-      <div class="rec-card-head">
-        <div class="rec-title">${p.doctorName ? 'روشتة د. ' + p.doctorName : 'روشتة طبية'}</div>
-        <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(p.date)}</div></div>
+      <div class="rec-icon red"><i class="fas fa-prescription"></i></div>
+      <div class="rec-main">
+        <div class="rec-card-head">
+          <div class="rec-title">${p.doctorName ? 'روشتة د. ' + p.doctorName : 'روشتة طبية'}</div>
+          <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(p.date)}</div></div>
+        </div>
+        ${meds ? `<ul class="rec-meds">${meds}</ul>` : ''}
+        ${p.notes ? `<div class="rec-body">${p.notes}</div>` : ''}
+        ${fileLink(p.fileUrl)}
       </div>
-      ${meds ? `<ul class="rec-meds">${meds}</ul>` : ''}
-      ${p.notes ? `<div class="rec-body">${p.notes}</div>` : ''}
-      ${fileLink(p.fileUrl)}
     </div>`;
   }).join('');
 }
@@ -251,28 +391,29 @@ const loadedTabs = new Set();
 
 async function loadTab(tabKey) {
   const panel = document.getElementById('panel-' + tabKey);
+  const titleEl = panel.querySelector('.panel-title');
   const cfg = TAB_CONFIG[tabKey];
   try {
     const result = await cfg.fetch();
     if (!result.success) {
-      panel.innerHTML = emptyState('fa-triangle-exclamation', result.message || 'تعذر تحميل البيانات، حاول مرة أخرى');
+      panel.innerHTML = titleEl.outerHTML + emptyState('fa-triangle-exclamation', 'تعذر تحميل البيانات', result.message || 'حاول مرة أخرى لاحقاً');
       return;
     }
     const list = Array.isArray(result.data) ? result.data : [];
-    panel.innerHTML = cfg.render(list);
+    panel.innerHTML = titleEl.outerHTML + cfg.render(list);
     document.getElementById(cfg.countId).textContent = list.length;
     loadedTabs.add(tabKey);
   } catch (err) {
     console.error(tabKey, err);
-    panel.innerHTML = emptyState('fa-triangle-exclamation', 'حدث خطأ أثناء تحميل البيانات');
+    panel.innerHTML = titleEl.outerHTML + emptyState('fa-triangle-exclamation', 'حدث خطأ أثناء تحميل البيانات', 'تحقق من الاتصال وحاول مرة أخرى');
   }
 }
 
-// ── Tabs wiring ──
-document.querySelectorAll('.tab-btn').forEach(btn => {
+// ── Tabs wiring (stat cards double as tab switchers) ──
+document.querySelectorAll('.stat-card').forEach(btn => {
   btn.addEventListener('click', () => {
     const tabKey = btn.dataset.tab;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.stat-card').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('panel-' + tabKey).classList.add('active');
@@ -288,16 +429,20 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
 
 // ── Init: greet patient, load first tab ──
 (async function init() {
-  const cached = API.getUser();
-  if (cached && cached.firstName) {
-    document.getElementById('patientName').textContent = `${cached.firstName} ${cached.lastName || ''}`.trim();
+  function applyName(u) {
+    const full = `${u.firstName || ''} ${u.lastName || ''}`.trim() || 'المريض';
+    document.getElementById('patientName').textContent = full;
+    document.getElementById('patientNameHero').textContent = u.firstName || full;
+    document.getElementById('avatarInitial').textContent = (u.firstName || 'م').charAt(0);
   }
+  const cached = API.getUser();
+  if (cached && cached.firstName) applyName(cached);
+
   const me = await API.getMe();
   if (me.success && me.data) {
-    document.getElementById('patientName').textContent = `${me.data.firstName} ${me.data.lastName || ''}`.trim();
+    applyName(me.data);
     API.setUser(me.data);
   } else if (me.status === 401) {
-    // token expired/invalid — send back to login
     API.removeToken();
     window.location.href = 'index.html';
     return;
