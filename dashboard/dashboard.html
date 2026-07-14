@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لوحة المريض | مستشفى ريتاج التخصصي</title>
+<title data-ar="لوحة المريض | مستشفى ريتاج التخصصي" data-en="Patient Portal | Ritaj Specialized Hospital">لوحة المريض | مستشفى ريتاج التخصصي</title>
 <link rel="icon" type="image/png" href="../assets/Logo.jpg">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -43,6 +43,11 @@
   .dash-logo img { height:42px; border-radius:9px; object-fit:cover; }
   .dash-logo span { font-weight:900; font-size:1.05rem; color:var(--green); font-family:'Cairo',sans-serif; direction:rtl; }
   .dash-nav-right { display:flex; align-items:center; gap:12px; direction:rtl; }
+  .lang-btn {
+    display:flex; align-items:center; gap:6px; background:var(--off-white); border:1px solid var(--border);
+    color:var(--green); padding:9px 14px; border-radius:9px; cursor:pointer; font-weight:700;
+    font-size:.8rem; font-family:'Cairo',sans-serif;
+  }
   .nav-book-btn {
     display:flex; align-items:center; gap:8px; background:var(--green); color:#fff;
     padding:10px 18px; border-radius:9px; text-decoration:none; font-size:.85rem;
@@ -170,59 +175,60 @@
   <div class="dash-nav-inner">
     <a href="../index.html" class="dash-logo">
       <img src="../assets/Logo.jpg" alt="ريتاج">
-      <span>مستشفى ريتاج التخصصي</span>
+      <span data-ar="مستشفى ريتاج التخصصي" data-en="Ritaj Specialized Hospital">مستشفى ريتاج التخصصي</span>
     </a>
     <div class="dash-nav-right">
-      <a href="../appointment.html" class="nav-book-btn"><i class="fas fa-calendar-plus"></i> <span>حجز موعد جديد</span></a>
+      <button class="lang-btn" id="langToggle"><i class="fas fa-globe"></i> <span id="langLabel">EN</span></button>
+      <a href="../appointment.html" class="nav-book-btn"><i class="fas fa-calendar-plus"></i> <span data-ar="حجز موعد جديد" data-en="Book New Appointment">حجز موعد جديد</span></a>
       <div class="user-chip">
         <div class="avatar" id="avatarInitial">؟</div>
-        <div class="who"><small>مرحباً بعودتك</small><strong id="patientName">...</strong></div>
+        <div class="who"><small data-ar="مرحباً بعودتك" data-en="Welcome back">مرحباً بعودتك</small><strong id="patientName">...</strong></div>
       </div>
-      <button class="logout-btn" id="logoutBtn" title="تسجيل الخروج"><i class="fas fa-sign-out-alt"></i></button>
+      <button class="logout-btn" id="logoutBtn" data-ar-title="تسجيل الخروج" data-en-title="Log out" title="تسجيل الخروج"><i class="fas fa-sign-out-alt"></i></button>
     </div>
   </div>
 </nav>
 
 <div class="dash-hero">
   <div class="container">
-    <h1>أهلاً بك، <span id="patientNameHero">...</span> <span class="emoji">👋</span></h1>
-    <p>هذه لوحتك الطبية الخاصة — تابع مواعيدك، نتائج تحاليلك، الأشعة، التقارير والروشتات من مكان واحد.</p>
+    <h1><span data-ar="أهلاً بك،" data-en="Welcome,">أهلاً بك،</span> <span id="patientNameHero">...</span> <span class="emoji">👋</span></h1>
+    <p data-ar="هذه لوحتك الطبية الخاصة — تابع مواعيدك، نتائج تحاليلك، الأشعة، التقارير والروشتات من مكان واحد." data-en="This is your personal medical portal — track your appointments, lab results, imaging, reports, and prescriptions in one place.">هذه لوحتك الطبية الخاصة — تابع مواعيدك، نتائج تحاليلك، الأشعة، التقارير والروشتات من مكان واحد.</p>
   </div>
 </div>
 
 <div class="container">
   <div class="stats-row" id="tabs">
-    <div class="stat-card active" data-tab="upcoming"><i class="fas fa-calendar-check"></i><span class="num" id="count-upcoming">0</span><span class="lbl">مواعيد قادمة</span></div>
-    <div class="stat-card" data-tab="past"><i class="fas fa-history"></i><span class="num" id="count-past">0</span><span class="lbl">مواعيد سابقة</span></div>
-    <div class="stat-card" data-tab="labs"><i class="fas fa-flask"></i><span class="num" id="count-labs">0</span><span class="lbl">نتائج تحاليل</span></div>
-    <div class="stat-card" data-tab="imaging"><i class="fas fa-x-ray"></i><span class="num" id="count-imaging">0</span><span class="lbl">الأشعة</span></div>
-    <div class="stat-card" data-tab="reports"><i class="fas fa-file-medical"></i><span class="num" id="count-reports">0</span><span class="lbl">تقارير طبية</span></div>
-    <div class="stat-card" data-tab="prescriptions"><i class="fas fa-prescription"></i><span class="num" id="count-prescriptions">0</span><span class="lbl">الروشتات</span></div>
+    <div class="stat-card active" data-tab="upcoming"><i class="fas fa-calendar-check"></i><span class="num" id="count-upcoming">0</span><span class="lbl" data-ar="مواعيد قادمة" data-en="Upcoming">مواعيد قادمة</span></div>
+    <div class="stat-card" data-tab="past"><i class="fas fa-history"></i><span class="num" id="count-past">0</span><span class="lbl" data-ar="مواعيد سابقة" data-en="Past">مواعيد سابقة</span></div>
+    <div class="stat-card" data-tab="labs"><i class="fas fa-flask"></i><span class="num" id="count-labs">0</span><span class="lbl" data-ar="نتائج تحاليل" data-en="Lab Results">نتائج تحاليل</span></div>
+    <div class="stat-card" data-tab="imaging"><i class="fas fa-x-ray"></i><span class="num" id="count-imaging">0</span><span class="lbl" data-ar="الأشعة" data-en="Imaging">الأشعة</span></div>
+    <div class="stat-card" data-tab="reports"><i class="fas fa-file-medical"></i><span class="num" id="count-reports">0</span><span class="lbl" data-ar="تقارير طبية" data-en="Reports">تقارير طبية</span></div>
+    <div class="stat-card" data-tab="prescriptions"><i class="fas fa-prescription"></i><span class="num" id="count-prescriptions">0</span><span class="lbl" data-ar="الروشتات" data-en="Prescriptions">الروشتات</span></div>
   </div>
 
   <div class="panel active" id="panel-upcoming">
-    <div class="panel-title"><i class="fas fa-calendar-check"></i> المواعيد القادمة</div>
-    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+    <div class="panel-title"><i class="fas fa-calendar-check"></i> <span data-ar="المواعيد القادمة" data-en="Upcoming Appointments">المواعيد القادمة</span></div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div><span data-ar="جارِ التحميل..." data-en="Loading...">جارِ التحميل...</span></div>
   </div>
   <div class="panel" id="panel-past">
-    <div class="panel-title"><i class="fas fa-history"></i> المواعيد السابقة</div>
-    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+    <div class="panel-title"><i class="fas fa-history"></i> <span data-ar="المواعيد السابقة" data-en="Past Appointments">المواعيد السابقة</span></div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div><span data-ar="جارِ التحميل..." data-en="Loading...">جارِ التحميل...</span></div>
   </div>
   <div class="panel" id="panel-labs">
-    <div class="panel-title"><i class="fas fa-flask"></i> نتائج التحاليل</div>
-    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+    <div class="panel-title"><i class="fas fa-flask"></i> <span data-ar="نتائج التحاليل" data-en="Lab Results">نتائج التحاليل</span></div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div><span data-ar="جارِ التحميل..." data-en="Loading...">جارِ التحميل...</span></div>
   </div>
   <div class="panel" id="panel-imaging">
-    <div class="panel-title"><i class="fas fa-x-ray"></i> الأشعة</div>
-    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+    <div class="panel-title"><i class="fas fa-x-ray"></i> <span data-ar="الأشعة" data-en="Imaging">الأشعة</span></div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div><span data-ar="جارِ التحميل..." data-en="Loading...">جارِ التحميل...</span></div>
   </div>
   <div class="panel" id="panel-reports">
-    <div class="panel-title"><i class="fas fa-file-medical"></i> التقارير الطبية</div>
-    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+    <div class="panel-title"><i class="fas fa-file-medical"></i> <span data-ar="التقارير الطبية" data-en="Medical Reports">التقارير الطبية</span></div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div><span data-ar="جارِ التحميل..." data-en="Loading...">جارِ التحميل...</span></div>
   </div>
   <div class="panel" id="panel-prescriptions">
-    <div class="panel-title"><i class="fas fa-prescription"></i> الروشتات</div>
-    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div>جارِ التحميل...</div>
+    <div class="panel-title"><i class="fas fa-prescription"></i> <span data-ar="الروشتات" data-en="Prescriptions">الروشتات</span></div>
+    <div class="loading-state"><div class="ic"><i class="fas fa-spinner"></i></div><span data-ar="جارِ التحميل..." data-en="Loading...">جارِ التحميل...</span></div>
   </div>
 </div>
 
@@ -234,26 +240,70 @@ if (!API.isLoggedIn()) {
   window.location.href = 'index.html';
 }
 
+// ── Language: same 'ritaj-lang' key as the rest of the site, so once a
+// patient picks English anywhere, it stays English everywhere — including
+// after login, with zero extra clicks. ──
+let currentLang = localStorage.getItem('ritaj-lang') || 'ar';
+
 const DEPT_LABELS = {
-  emergency:'وحدة الطوارئ', icu:'العناية المركزة', surgery:'قسم العمليات',
-  obstetrics:'النساء والولادة', dental:'قسم الأسنان', eyes:'طب العيون',
-  radiology:'قسم الأشعة', labs:'معامل ريتاج', internal:'أمراض الباطنة',
-  endocrine:'الغدد والسكر', cosmetics:'قسم التجميل', pharmacy:'صيدلية ريتاج'
+  emergency:{ar:'وحدة الطوارئ',en:'Emergency Unit'}, icu:{ar:'العناية المركزة',en:'ICU'}, surgery:{ar:'قسم العمليات',en:'Surgery'},
+  obstetrics:{ar:'النساء والولادة',en:'Obstetrics & Gynecology'}, dental:{ar:'قسم الأسنان',en:'Dental'}, eyes:{ar:'طب العيون',en:'Ophthalmology'},
+  radiology:{ar:'قسم الأشعة',en:'Radiology'}, labs:{ar:'معامل ريتاج',en:'Ritaj Labs'}, internal:{ar:'أمراض الباطنة',en:'Internal Medicine'},
+  endocrine:{ar:'الغدد والسكر',en:'Endocrinology'}, cosmetics:{ar:'قسم التجميل',en:'Cosmetics'}, pharmacy:{ar:'صيدلية ريتاج',en:'Ritaj Pharmacy'}
 };
-const TIME_LABELS = { morning:'الصباح (9ص - 12م)', afternoon:'الظهيرة (12م - 4م)', evening:'المساء (4م - 9م)' };
+const TIME_LABELS = {
+  morning:{ar:'الصباح (9ص - 12م)',en:'Morning (9am - 12pm)'},
+  afternoon:{ar:'الظهيرة (12م - 4م)',en:'Afternoon (12pm - 4pm)'},
+  evening:{ar:'المساء (4م - 9م)',en:'Evening (4pm - 9pm)'}
+};
 const APPT_STATUS = {
-  pending: {label:'قيد المراجعة', cls:'badge-yellow'},
-  confirmed: {label:'مؤكد', cls:'badge-green'},
-  completed: {label:'مكتمل', cls:'badge-gray'},
-  cancelled: {label:'ملغي', cls:'badge-red'}
+  pending: {label:{ar:'قيد المراجعة',en:'Under Review'}, cls:'badge-yellow'},
+  confirmed: {label:{ar:'مؤكد',en:'Confirmed'}, cls:'badge-green'},
+  completed: {label:{ar:'مكتمل',en:'Completed'}, cls:'badge-gray'},
+  cancelled: {label:{ar:'ملغي',en:'Cancelled'}, cls:'badge-red'}
 };
-const LAB_STATUS = { pending:{label:'قيد التحليل', cls:'badge-yellow'}, ready:{label:'جاهزة', cls:'badge-green'} };
-const RX_STATUS = { pending:{label:'لم تُصرف بعد', cls:'badge-yellow'}, filled:{label:'تم الصرف', cls:'badge-green'} };
+const LAB_STATUS = {
+  pending:{label:{ar:'قيد التحليل',en:'In Progress'}, cls:'badge-yellow'},
+  ready:{label:{ar:'جاهزة',en:'Ready'}, cls:'badge-green'}
+};
+const RX_STATUS = {
+  pending:{label:{ar:'لم تُصرف بعد',en:'Not Filled Yet'}, cls:'badge-yellow'},
+  filled:{label:{ar:'تم الصرف',en:'Filled'}, cls:'badge-green'}
+};
+
+const UI_STRINGS = {
+  noDoctorAssigned: {ar:'سيتم تحديد الطبيب من قبل الفريق الطبي', en:'A doctor will be assigned by the medical team'},
+  doctorPrefix: {ar:'الطبيب: ', en:'Doctor: '},
+  viewDownloadFile: {ar:'عرض / تحميل الملف', en:'View / Download File'},
+  noUpcoming: {ar:'لا توجد مواعيد قادمة حالياً', en:'No upcoming appointments'},
+  noUpcomingSub: {ar:'يمكنك حجز موعد جديد في أي وقت', en:'You can book a new appointment anytime'},
+  bookNow: {ar:'احجز موعدك الآن', en:'Book an appointment now'},
+  noPast: {ar:'لا توجد مواعيد سابقة', en:'No past appointments'},
+  noPastSub: {ar:'ستظهر هنا مواعيدك بعد اكتمالها', en:'Your completed appointments will appear here'},
+  noLabs: {ar:'لا توجد نتائج تحاليل بعد', en:'No lab results yet'},
+  noLabsSub: {ar:'ستظهر نتائج تحاليلك هنا فور اعتمادها من المعمل', en:'Your results will appear here once approved by the lab'},
+  noImaging: {ar:'لا توجد أشعة مسجلة بعد', en:'No imaging records yet'},
+  noImagingSub: {ar:'ستظهر تقارير الأشعة الخاصة بك هنا', en:'Your imaging reports will appear here'},
+  noReports: {ar:'لا توجد تقارير طبية بعد', en:'No medical reports yet'},
+  noReportsSub: {ar:'ستظهر التقارير التي يرفعها الفريق الطبي هنا', en:'Reports uploaded by the medical team will appear here'},
+  noPrescriptions: {ar:'لا توجد روشتات بعد', en:'No prescriptions yet'},
+  noPrescriptionsSub: {ar:'ستظهر الروشتات الطبية الخاصة بك هنا', en:'Your prescriptions will appear here'},
+  rxByDoctor: {ar:'روشتة د. ', en:'Prescription by Dr. '},
+  rxGeneric: {ar:'روشتة طبية', en:'Prescription'},
+  loadFailed: {ar:'تعذر تحميل البيانات', en:'Failed to load data'},
+  tryAgainLater: {ar:'حاول مرة أخرى لاحقاً', en:'Please try again later'},
+  loadError: {ar:'حدث خطأ أثناء تحميل البيانات', en:'An error occurred while loading data'},
+  checkConnection: {ar:'تحقق من الاتصال وحاول مرة أخرى', en:'Check your connection and try again'},
+  patientFallback: {ar:'المريض', en:'Patient'}
+};
+function ui(key) { return UI_STRINGS[key][currentLang]; }
 
 function fmtDate(iso) {
   if (!iso) return '';
   try {
-    return new Date(iso).toLocaleDateString('ar-EG', { year:'numeric', month:'long', day:'numeric' });
+    return currentLang === 'ar'
+      ? new Date(iso).toLocaleDateString('ar-EG', { year:'numeric', month:'long', day:'numeric' })
+      : new Date(iso).toLocaleDateString('en-GB', { year:'numeric', month:'long', day:'numeric' });
   } catch (e) { return iso; }
 }
 
@@ -268,19 +318,20 @@ function emptyState(icon, title, sub, cta) {
 
 function fileLink(url) {
   if (!url) return '';
-  return `<a class="rec-file-link" href="${url}" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> عرض / تحميل الملف</a>`;
+  return `<a class="rec-file-link" href="${url}" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> ${ui('viewDownloadFile')}</a>`;
 }
 
 // ── Renderers per record type ──
 function renderAppointments(list, pastMode) {
   if (!list.length) {
     return pastMode
-      ? emptyState('fa-calendar-xmark', 'لا توجد مواعيد سابقة', 'ستظهر هنا مواعيدك بعد اكتمالها')
-      : emptyState('fa-calendar-xmark', 'لا توجد مواعيد قادمة حالياً', 'يمكنك حجز موعد جديد في أي وقت', {href:'../appointment.html', label:'احجز موعدك الآن'});
+      ? emptyState('fa-calendar-xmark', ui('noPast'), ui('noPastSub'))
+      : emptyState('fa-calendar-xmark', ui('noUpcoming'), ui('noUpcomingSub'), {href:'../appointment.html', label:ui('bookNow')});
   }
   return list.map(a => {
     const st = APPT_STATUS[a.status] || APPT_STATUS.pending;
-    const dept = DEPT_LABELS[a.department] || a.department;
+    const dept = (DEPT_LABELS[a.department] && DEPT_LABELS[a.department][currentLang]) || a.department;
+    const timeLbl = a.time ? ((TIME_LABELS[a.time] && TIME_LABELS[a.time][currentLang]) || a.time) : '';
     return `
     <div class="rec-card">
       <div class="rec-icon"><i class="fas fa-calendar-check"></i></div>
@@ -288,11 +339,11 @@ function renderAppointments(list, pastMode) {
         <div class="rec-card-head">
           <div>
             <div class="rec-title">${dept}</div>
-            <div class="rec-sub">${a.doctorName ? 'الطبيب: ' + a.doctorName : 'سيتم تحديد الطبيب من قبل الفريق الطبي'}</div>
+            <div class="rec-sub">${a.doctorName ? ui('doctorPrefix') + a.doctorName : ui('noDoctorAssigned')}</div>
           </div>
           <div style="text-align:left">
-            <span class="badge ${st.cls}">${st.label}</span>
-            <div class="rec-date">${fmtDate(a.date)}${a.time ? ' — ' + (TIME_LABELS[a.time] || a.time) : ''}</div>
+            <span class="badge ${st.cls}">${st.label[currentLang]}</span>
+            <div class="rec-date">${fmtDate(a.date)}${timeLbl ? ' — ' + timeLbl : ''}</div>
           </div>
         </div>
         ${a.notes ? `<div class="rec-body">${a.notes}</div>` : ''}
@@ -302,7 +353,7 @@ function renderAppointments(list, pastMode) {
 }
 
 function renderLabs(list) {
-  if (!list.length) return emptyState('fa-flask', 'لا توجد نتائج تحاليل بعد', 'ستظهر نتائج تحاليلك هنا فور اعتمادها من المعمل');
+  if (!list.length) return emptyState('fa-flask', ui('noLabs'), ui('noLabsSub'));
   return list.map(l => {
     const st = LAB_STATUS[l.status] || LAB_STATUS.pending;
     return `
@@ -311,7 +362,7 @@ function renderLabs(list) {
       <div class="rec-main">
         <div class="rec-card-head">
           <div class="rec-title">${l.testName}</div>
-          <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(l.date)}</div></div>
+          <div style="text-align:left"><span class="badge ${st.cls}">${st.label[currentLang]}</span><div class="rec-date">${fmtDate(l.date)}</div></div>
         </div>
         ${l.resultSummary ? `<div class="rec-body">${l.resultSummary}</div>` : ''}
         ${fileLink(l.fileUrl)}
@@ -321,7 +372,7 @@ function renderLabs(list) {
 }
 
 function renderImaging(list) {
-  if (!list.length) return emptyState('fa-x-ray', 'لا توجد أشعة مسجلة بعد', 'ستظهر تقارير الأشعة الخاصة بك هنا');
+  if (!list.length) return emptyState('fa-x-ray', ui('noImaging'), ui('noImagingSub'));
   return list.map(i => `
     <div class="rec-card">
       <div class="rec-icon"><i class="fas fa-x-ray"></i></div>
@@ -337,7 +388,7 @@ function renderImaging(list) {
 }
 
 function renderReports(list) {
-  if (!list.length) return emptyState('fa-file-medical', 'لا توجد تقارير طبية بعد', 'ستظهر التقارير التي يرفعها الفريق الطبي هنا');
+  if (!list.length) return emptyState('fa-file-medical', ui('noReports'), ui('noReportsSub'));
   return list.map(r => `
     <div class="rec-card">
       <div class="rec-icon"><i class="fas fa-file-medical"></i></div>
@@ -356,7 +407,7 @@ function renderReports(list) {
 }
 
 function renderPrescriptions(list) {
-  if (!list.length) return emptyState('fa-prescription', 'لا توجد روشتات بعد', 'ستظهر الروشتات الطبية الخاصة بك هنا');
+  if (!list.length) return emptyState('fa-prescription', ui('noPrescriptions'), ui('noPrescriptionsSub'));
   return list.map(p => {
     const st = RX_STATUS[p.status] || RX_STATUS.pending;
     const meds = (p.medications || []).map(m =>
@@ -367,8 +418,8 @@ function renderPrescriptions(list) {
       <div class="rec-icon red"><i class="fas fa-prescription"></i></div>
       <div class="rec-main">
         <div class="rec-card-head">
-          <div class="rec-title">${p.doctorName ? 'روشتة د. ' + p.doctorName : 'روشتة طبية'}</div>
-          <div style="text-align:left"><span class="badge ${st.cls}">${st.label}</span><div class="rec-date">${fmtDate(p.date)}</div></div>
+          <div class="rec-title">${p.doctorName ? ui('rxByDoctor') + p.doctorName : ui('rxGeneric')}</div>
+          <div style="text-align:left"><span class="badge ${st.cls}">${st.label[currentLang]}</span><div class="rec-date">${fmtDate(p.date)}</div></div>
         </div>
         ${meds ? `<ul class="rec-meds">${meds}</ul>` : ''}
         ${p.notes ? `<div class="rec-body">${p.notes}</div>` : ''}
@@ -378,7 +429,7 @@ function renderPrescriptions(list) {
   }).join('');
 }
 
-// ── Data loading per tab ──
+// ── Data loading per tab (raw data cached so language toggle re-renders without refetching) ──
 const TAB_CONFIG = {
   upcoming:      { fetch: () => API.getMyAppointments(), render: (d) => renderAppointments(d, false), countId:'count-upcoming' },
   past:          { fetch: () => API.getMyPastAppointments(), render: (d) => renderAppointments(d, true), countId:'count-past' },
@@ -388,6 +439,22 @@ const TAB_CONFIG = {
   prescriptions: { fetch: () => API.getMyPrescriptions(), render: renderPrescriptions, countId:'count-prescriptions' },
 };
 const loadedTabs = new Set();
+const tabDataCache = {};
+const tabErrorCache = {};
+
+function paintTab(tabKey) {
+  const panel = document.getElementById('panel-' + tabKey);
+  const titleEl = panel.querySelector('.panel-title');
+  const cfg = TAB_CONFIG[tabKey];
+  if (tabErrorCache[tabKey]) {
+    panel.innerHTML = titleEl.outerHTML + tabErrorCache[tabKey]();
+    return;
+  }
+  if (tabDataCache[tabKey]) {
+    panel.innerHTML = titleEl.outerHTML + cfg.render(tabDataCache[tabKey]);
+    document.getElementById(cfg.countId).textContent = tabDataCache[tabKey].length;
+  }
+}
 
 async function loadTab(tabKey) {
   const panel = document.getElementById('panel-' + tabKey);
@@ -396,16 +463,19 @@ async function loadTab(tabKey) {
   try {
     const result = await cfg.fetch();
     if (!result.success) {
-      panel.innerHTML = titleEl.outerHTML + emptyState('fa-triangle-exclamation', 'تعذر تحميل البيانات', result.message || 'حاول مرة أخرى لاحقاً');
+      tabErrorCache[tabKey] = () => emptyState('fa-triangle-exclamation', ui('loadFailed'), result.message || ui('tryAgainLater'));
+      panel.innerHTML = titleEl.outerHTML + tabErrorCache[tabKey]();
       return;
     }
     const list = Array.isArray(result.data) ? result.data : [];
+    tabDataCache[tabKey] = list;
     panel.innerHTML = titleEl.outerHTML + cfg.render(list);
     document.getElementById(cfg.countId).textContent = list.length;
     loadedTabs.add(tabKey);
   } catch (err) {
     console.error(tabKey, err);
-    panel.innerHTML = titleEl.outerHTML + emptyState('fa-triangle-exclamation', 'حدث خطأ أثناء تحميل البيانات', 'تحقق من الاتصال وحاول مرة أخرى');
+    tabErrorCache[tabKey] = () => emptyState('fa-triangle-exclamation', ui('loadError'), ui('checkConnection'));
+    panel.innerHTML = titleEl.outerHTML + tabErrorCache[tabKey]();
   }
 }
 
@@ -417,7 +487,7 @@ document.querySelectorAll('.stat-card').forEach(btn => {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('panel-' + tabKey).classList.add('active');
-    if (!loadedTabs.has(tabKey)) loadTab(tabKey);
+    if (!loadedTabs.has(tabKey) && !tabErrorCache[tabKey]) loadTab(tabKey);
   });
 });
 
@@ -427,13 +497,38 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
   window.location.href = 'index.html';
 });
 
+// ── Language toggle ──
+function applyLang() {
+  const isAr = currentLang === 'ar';
+  document.getElementById('html-root').lang = currentLang;
+  document.getElementById('html-root').dir = isAr ? 'rtl' : 'ltr';
+  document.getElementById('langLabel').textContent = isAr ? 'EN' : 'AR';
+
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    el.textContent = isAr ? el.dataset.ar : el.dataset.en;
+  });
+  document.querySelectorAll('[data-ar-title]').forEach(el => {
+    el.title = isAr ? el.dataset.arTitle : el.dataset.enTitle;
+  });
+
+  // Re-render any tab that already has cached data or an error state, in the new language
+  Object.keys(tabDataCache).forEach(paintTab);
+  Object.keys(tabErrorCache).forEach(paintTab);
+}
+document.getElementById('langToggle').addEventListener('click', () => {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  localStorage.setItem('ritaj-lang', currentLang);
+  applyLang();
+});
+applyLang();
+
 // ── Init: greet patient, load first tab ──
 (async function init() {
   function applyName(u) {
-    const full = `${u.firstName || ''} ${u.lastName || ''}`.trim() || 'المريض';
+    const full = `${u.firstName || ''} ${u.lastName || ''}`.trim() || ui('patientFallback');
     document.getElementById('patientName').textContent = full;
     document.getElementById('patientNameHero').textContent = u.firstName || full;
-    document.getElementById('avatarInitial').textContent = (u.firstName || 'م').charAt(0);
+    document.getElementById('avatarInitial').textContent = (u.firstName || ui('patientFallback')).charAt(0);
   }
   const cached = API.getUser();
   if (cached && cached.firstName) applyName(cached);
