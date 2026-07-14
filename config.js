@@ -22,15 +22,6 @@ const BRAND = {
   email: "info@ritajhospital.com", // TODO: confirm real support email with Dr. Yousef
   city: "مدينة سوهاج الجديدة — محافظة سوهاج — مصر",
 
-  // FIX: this used to point at pioneersx-backend.onrender.com — the
-  // agency's OWN internal subscription/billing backend, not a real
-  // hospital backend. Patient registrations from this site would have
-  // either failed or landed in the wrong database entirely.
-  //
-  // Now points at the dedicated Ritaj backend, live on Render:
-  // https://ritajhospital-backend.onrender.com — separate service,
-  // separate database (same cluster, "ritaj" db), fully isolated
-  // from the agency's own data.
   apiBase: "https://ritajhospital-backend.onrender.com/api",
 
   domain: "https://Ritaj-Hostpital.pages.dev", // TODO: update once Cloudflare Pages domain is live
@@ -54,9 +45,24 @@ const BRAND = {
 // ── Auto-apply brand to page ───────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
 
-  document.title = `${BRAND.name} - ${BRAND.tagline}`;
-  document.documentElement.lang = BRAND.lang;
-  document.documentElement.dir = BRAND.dir;
+  // FIX: this used to unconditionally force document.title / lang / dir to
+  // BRAND's hardcoded Arabic values on EVERY page load. Dashboard pages
+  // (login, register, dashboard, forgot/reset password) run their own
+  // language-restore script that reads the saved 'ritaj-lang' preference
+  // and correctly sets English text + dir="ltr" — but that script runs
+  // DURING PARSING, while this DOMContentLoaded handler fires AFTER, so it
+  // was silently reverting dir/lang back to Arabic every time, even though
+  // the visible text stayed in English. That's what caused the "text is
+  // English but layout is still RTL" bug (backwards emoji, misplaced
+  // punctuation, wrong-side alignment). Now this only applies the brand
+  // defaults when there's no saved English preference — pages that manage
+  // their own bilingual state are left alone.
+  const savedLang = localStorage.getItem('ritaj-lang');
+  if (savedLang !== 'en') {
+    document.title = `${BRAND.name} - ${BRAND.tagline}`;
+    document.documentElement.lang = BRAND.lang;
+    document.documentElement.dir = BRAND.dir;
+  }
 
   const replacements = {
     "brand-name": BRAND.name,
